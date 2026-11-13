@@ -1,5 +1,10 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import {
+  SUPABASE_CONFIGURED,
+  SUPABASE_KEY,
+  SUPABASE_URL,
+} from "@/lib/supabase/env";
 
 /**
  * Läuft vor jeder Seite: frischt die Supabase-Session auf und
@@ -8,9 +13,18 @@ import { NextResponse, type NextRequest } from "next/server";
 export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });
 
+  if (!SUPABASE_CONFIGURED) {
+    return new NextResponse(
+      "Supabase ist nicht konfiguriert: In Vercel unter Settings → Environment Variables " +
+        "NEXT_PUBLIC_SUPABASE_URL und NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY (oder NEXT_PUBLIC_SUPABASE_ANON_KEY) " +
+        "eintragen und danach neu deployen.",
+      { status: 500, headers: { "content-type": "text/plain; charset=utf-8" } },
+    );
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    SUPABASE_URL,
+    SUPABASE_KEY,
     {
       cookies: {
         getAll() {
