@@ -3,30 +3,16 @@
 import { useState } from "react";
 import { Check, Dices, Plus } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
-import { Chips, DeleteButton, ErrorBox, Field, Modal, SaveButtons, Stars, inputClass } from "@/components/ui";
+import { SkeletonList } from "@/components/skeleton";
+import { Chips, ErrorBox, Field, Modal, SaveButtons, Stars, inputClass } from "@/components/ui";
 import { getSupabase } from "@/lib/supabase/client";
 import { useTable } from "@/lib/use-table";
 import { useToday } from "@/lib/use-today";
 import { useCalendarMeta } from "@/lib/use-calendar-meta";
 import { useProfiles } from "@/lib/use-profile";
 import { formatDate } from "@/lib/calendar";
-import { notifyPartner } from "@/lib/push-client";
-
-type Kind = "film" | "serie";
-
-type WatchItem = {
-  id: string;
-  title: string;
-  kind: Kind;
-  platform: string | null;
-  note: string | null;
-  watched_at: string | null;
-  ratings: Record<string, number>;
-  created_at: string;
-};
-
-const KINDS: Record<Kind, string> = { film: "🎬 Film", serie: "📺 Serie" };
-const COLUMNS = "id, title, kind, platform, note, watched_at, ratings, created_at";
+import { WATCH_COLUMNS as COLUMNS, WATCH_KINDS as KINDS, WatchDialog, type WatchItem, type WatchKind as Kind } from "@/components/dialogs/watch-dialog";
+import { toastSaved } from "@/lib/toast";
 
 function average(r: Record<string, number>): number | null {
   const v = Object.values(r ?? {}).filter((x) => typeof x === "number");
@@ -114,7 +100,7 @@ export default function WatchlistPage() {
       )}
 
       {loading ? (
-        <p className="text-sm text-muted">Lädt …</p>
+        <SkeletonList />
       ) : tab === "offen" ? (
         open.length === 0 && !error ? (
           <button
@@ -177,54 +163,9 @@ export default function WatchlistPage() {
         </ul>
       )}
 
-      {edit && <ItemDialog item={edit.item} onClose={() => setEdit(null)} />}
+      {edit && <WatchDialog item={edit.item} onClose={() => setEdit(null)} />}
       {rateFor && <RateDialog item={rateFor} people={meta.people} onClose={() => setRateFor(null)} />}
     </>
-  );
-}
-
-function ItemDialog({ item, onClose }: { item: WatchItem | null; onClose: () => void }) {
-  const [title, setTitle] = useState(item?.title ?? "");
-  const [kind, setKind] = useState<Kind>(item?.kind ?? "film");
-  const [platform, setPlatform] = useState(item?.platform ?? "");
-  const [note, setNote] = useState(item?.note ?? "");
-  const [error, setError] = useState<string | null>(null);
-
-  async function save() {
-    if (!title.trim()) return;
-    const row = { title: title.trim(), kind, platform: platform.trim() || null, note: note.trim() || null };
-    const { error } = item
-      ? await getSupabase().from("watch_items").update(row).eq("id", item.id)
-      : await getSupabase().from("watch_items").insert(row);
-    if (error) return setError(error.message);
-    if (!item) notifyPartner("Neu auf der Watchlist", `${KINDS[kind]} ${row.title}`, "/watchlist");
-    onClose();
-  }
-
-  async function remove() {
-    if (!item || !window.confirm(`„${item.title}“ löschen?`)) return;
-    await getSupabase().from("watch_items").delete().eq("id", item.id);
-    onClose();
-  }
-
-  return (
-    <Modal
-      title={item ? "Bearbeiten" : "Film oder Serie hinzufügen"}
-      onClose={onClose}
-      onSubmit={save}
-      footer={
-        <>
-          {item && <DeleteButton onClick={remove} />}
-          <SaveButtons onCancel={onClose} />
-        </>
-      }
-    >
-      <input autoFocus={!item} required placeholder="Titel" value={title} onChange={(e) => setTitle(e.target.value)} className={`${inputClass} text-base font-medium`} />
-      <Chips options={[{ value: "film" as const, label: KINDS.film }, { value: "serie" as const, label: KINDS.serie }]} value={kind} onChange={setKind} />
-      <input placeholder="Wo? z. B. Netflix (optional)" value={platform} onChange={(e) => setPlatform(e.target.value)} className={inputClass} />
-      <input placeholder="Notiz, z. B. Empfehlung von Tom (optional)" value={note} onChange={(e) => setNote(e.target.value)} className={inputClass} />
-      {error && <p className="text-sm text-red-600">{error}</p>}
-    </Modal>
   );
 }
 
@@ -248,6 +189,7 @@ function RateDialog({
       .from("watch_items")
       .update({ watched_at: date || today, ratings: clean })
       .eq("id", item.id);
+    toastSaved();
     onClose();
   }
 

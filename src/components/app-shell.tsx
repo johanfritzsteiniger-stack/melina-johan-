@@ -2,10 +2,12 @@
 
 import { Suspense, useEffect } from "react";
 import { registerServiceWorker } from "@/lib/push-client";
+import { Toaster } from "@/components/toaster";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { APP_NAME } from "@/lib/config";
-import { MOBILE_NAV, NAV_ITEMS, isActive } from "@/lib/nav";
+import { NAV_ITEMS, isActive } from "@/lib/nav";
+import { useMobileNav } from "@/lib/use-nav-bar";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -26,6 +28,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 pt-6 pb-28 md:px-8 md:pb-10">
         {children}
       </main>
+
+      <Toaster />
 
       {/* Untere Leiste am Handy */}
       <Suspense fallback={<MobileNav pathname="" />}>
@@ -68,8 +72,11 @@ function SidebarNav({ pathname }: { pathname: string }) {
 }
 
 function MobileNav({ pathname }: { pathname: string }) {
+  const MOBILE_NAV = useMobileNav();
   return (
-    <nav className="pb-safe fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t border-border bg-card/95 pt-2 backdrop-blur md:hidden">
+    <nav
+      style={{ gridTemplateColumns: `repeat(${MOBILE_NAV.length}, minmax(0, 1fr))` }}
+      className="pb-safe fixed inset-x-0 bottom-0 z-20 grid border-t border-border bg-card/95 pt-2 backdrop-blur md:hidden">
       {MOBILE_NAV.map(({ href, label, icon: Icon }) => {
         const active =
           pathname === ""

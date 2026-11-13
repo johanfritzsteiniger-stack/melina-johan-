@@ -5,11 +5,14 @@ import { useRouter } from "next/navigation";
 import { Plus, Trash2 } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { PushSettings } from "@/components/push-settings";
+import { NavBarSettings } from "@/components/nav-bar-settings";
 import { ColorPicker } from "@/components/color-picker";
 import { getSupabase } from "@/lib/supabase/client";
 import { useProfiles, type Profile } from "@/lib/use-profile";
 import { setColorMode, useCalendarMeta } from "@/lib/use-calendar-meta";
 import { PALETTE } from "@/lib/colors";
+import { deleteWithUndo } from "@/lib/undo";
+import { toastSaved } from "@/lib/toast";
 import type { Category } from "@/lib/calendar";
 
 const input =
@@ -73,13 +76,16 @@ export default function EinstellungenPage() {
                 const { error } = await getSupabase()
                   .from("app_settings")
                   .upsert({ key: "shared_color", value: color });
-                setSharedStatus(error ? "Speichern hat nicht geklappt: " + error.message : "Gespeichert.");
+                setSharedStatus(error ? "Speichern hat nicht geklappt: " + error.message : null);
+                if (!error) toastSaved("Farbe gespeichert");
                 meta.reload();
               }}
             />
             {sharedStatus && <p className="text-xs text-muted">{sharedStatus}</p>}
           </div>
         </Section>
+
+        <NavBarSettings />
 
         <CategoriesSection categories={meta.categories} reload={meta.reload} />
 
@@ -115,7 +121,8 @@ function TogetherSection({ since, reload }: { since: string | null; reload: () =
     const { error } = date
       ? await supabase.from("app_settings").upsert({ key: "together_since", value: date })
       : await supabase.from("app_settings").delete().eq("key", "together_since");
-    setStatus(error ? "Speichern hat nicht geklappt: " + error.message : "Gespeichert.");
+    setStatus(error ? "Speichern hat nicht geklappt: " + error.message : null);
+    if (!error) toastSaved();
     reload();
   }
 
@@ -156,7 +163,8 @@ function ProfileSection({ me, onSaved }: { me: Profile; onSaved: (p: Profile) =>
       setStatus("Speichern hat nicht geklappt.");
     } else {
       onSaved({ ...me, ...next });
-      setStatus("Gespeichert.");
+      setStatus(null);
+      toastSaved();
     }
   }
 
@@ -284,19 +292,19 @@ function CategoryRow({
     else {
       onError(null);
       reload();
+      toastSaved();
     }
   }
 
   async function remove() {
-    if (
-      !window.confirm(
-        `Kategorie „${category.name}“ löschen? Termine bleiben erhalten, nur ohne Kategorie.`,
-      )
-    )
-      return;
-    const { error } = await getSupabase().from("categories").delete().eq("id", category.id);
-    if (error) onError("Löschen hat nicht geklappt: " + error.message);
-    else reload();
+    const ok = await deleteWithUndo({
+      table: "categories",
+      ids: [category.id],
+      message: `Kategorie „${category.name}“ gelöscht`,
+      dependents: [{ table: "events", fk: "category_id", mode: "relink" }],
+      onUndone: reload,
+    });
+    if (ok) reload();
   }
 
   return (

@@ -15,12 +15,16 @@ import {
   X,
 } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
+import { SwipeRow } from "@/components/swipe-row";
+import { SkeletonList } from "@/components/skeleton";
 import { getSupabase } from "@/lib/supabase/client";
 import { useTable } from "@/lib/use-table";
 import { useToday } from "@/lib/use-today";
 import { useCalendarMeta } from "@/lib/use-calendar-meta";
 import { formatDate } from "@/lib/calendar";
 import { notifyPartner } from "@/lib/push-client";
+import { deleteWithUndo } from "@/lib/undo";
+import { toastSaved } from "@/lib/toast";
 import {
   ITEM_COLUMNS,
   LIST_COLUMNS,
@@ -35,8 +39,13 @@ const input =
 
 export default function ListenPage() {
   const today = useToday();
-  const lists = useTable<List>("lists", LIST_COLUMNS, [{ column: "sort" }, { column: "created_at" }]);
-  const items = useTable<ListItem>("list_items", ITEM_COLUMNS, [{ column: "sort" }]);
+  const lists = useTable<List>("lists", LIST_COLUMNS, [
+    { column: "sort" },
+    { column: "created_at" },
+  ]);
+  const items = useTable<ListItem>("list_items", ITEM_COLUMNS, [
+    { column: "sort" },
+  ]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [dialog, setDialog] = useState<{ list: List | null } | null>(null);
   const [showArchive, setShowArchive] = useState(false);
@@ -48,7 +57,8 @@ export default function ListenPage() {
 
   const openCount = useMemo(() => {
     const m = new Map<string, number>();
-    for (const i of items.rows) if (!i.done_at) m.set(i.list_id, (m.get(i.list_id) ?? 0) + 1);
+    for (const i of items.rows)
+      if (!i.done_at) m.set(i.list_id, (m.get(i.list_id) ?? 0) + 1);
     return m;
   }, [items.rows]);
 
@@ -59,13 +69,22 @@ export default function ListenPage() {
     const supabase = getSupabase();
     const { data, error } = await supabase
       .from("lists")
-      .insert({ name: source.name, emoji: source.emoji, sort: Date.now() / 1000 })
+      .insert({
+        name: source.name,
+        emoji: source.emoji,
+        sort: Date.now() / 1000,
+      })
       .select("id")
       .single();
     if (error || !data) return;
     const copy = items.rows
       .filter((i) => i.list_id === source.id)
-      .map((i, n) => ({ list_id: data.id, text: i.text, quantity: i.quantity, sort: n }));
+      .map((i, n) => ({
+        list_id: data.id,
+        text: i.text,
+        quantity: i.quantity,
+        sort: n,
+      }));
     if (copy.length) await supabase.from("list_items").insert(copy);
     setSelectedId(data.id);
   }
@@ -111,7 +130,7 @@ export default function ListenPage() {
       {error && <ErrorBox text={error} />}
 
       {lists.loading ? (
-        <p className="text-sm text-muted">Lädt …</p>
+        <SkeletonList />
       ) : active.length === 0 && !error ? (
         <button
           onClick={() => setDialog({ list: null })}
@@ -151,8 +170,15 @@ export default function ListenPage() {
             onClick={() => setShowArchive((s) => !s)}
             className="flex items-center gap-2 text-lg font-semibold"
           >
-            {showArchive ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
-            Archiv <span className="text-sm font-normal text-muted">({archived.length})</span>
+            {showArchive ? (
+              <ChevronDown size={18} />
+            ) : (
+              <ChevronRight size={18} />
+            )}
+            Archiv{" "}
+            <span className="text-sm font-normal text-muted">
+              ({archived.length})
+            </span>
           </button>
           {showArchive && (
             <ul className="mt-3 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
@@ -165,7 +191,11 @@ export default function ListenPage() {
                     <span>{l.emoji || "📝"}</span>
                     <span className="min-w-0 flex-1 truncate">{l.name}</span>
                     <span className="text-xs text-muted">
-                      {formatDate(archivedDate(l), { day: "numeric", month: "short", year: "numeric" })}
+                      {formatDate(archivedDate(l), {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
                     </span>
                   </button>
                 </li>
@@ -176,7 +206,11 @@ export default function ListenPage() {
       )}
 
       {dialog && (
-        <ListDialog list={dialog.list} onClose={() => setDialog(null)} onSaved={(id) => setSelectedId(id)} />
+        <ListDialog
+          list={dialog.list}
+          onClose={() => setDialog(null)}
+          onSaved={(id) => setSelectedId(id)}
+        />
       )}
     </>
   );
@@ -229,7 +263,9 @@ function ListView({
     const base = Date.now() / 1000;
     await getSupabase()
       .from("list_items")
-      .insert(parts.map((t, n) => ({ list_id: list.id, text: t, sort: base + n })));
+      .insert(
+        parts.map((t, n) => ({ list_id: list.id, text: t, sort: base + n })),
+      );
   }
 
   async function toggle(item: ListItem) {
@@ -239,18 +275,28 @@ function ListView({
       .update(
         item.done_at
           ? { done_at: null, done_by: null }
-          : { done_at: new Date().toISOString(), done_by: data.user?.id ?? null },
+          : {
+              done_at: new Date().toISOString(),
+              done_by: data.user?.id ?? null,
+            },
       )
       .eq("id", item.id);
   }
 
-  async function removeItem(id: string) {
-    await getSupabase().from("list_items").delete().eq("id", id);
+  async function removeItem(item: ListItem) {
+    await deleteWithUndo({
+      table: "list_items",
+      ids: [item.id],
+      message: `„${item.text}“ gelöscht`,
+    });
   }
 
   async function clearDone() {
-    if (!window.confirm(`${done.length} erledigte Einträge endgültig löschen?`)) return;
-    await getSupabase().from("list_items").delete().eq("list_id", list.id).not("done_at", "is", null);
+    await deleteWithUndo({
+      table: "list_items",
+      ids: done.map((i) => i.id),
+      message: `${done.length} erledigte Einträge gelöscht`,
+    });
   }
 
   async function setArchived(value: boolean) {
@@ -265,12 +311,17 @@ function ListView({
     if (value) onBack();
   }
 
-  const doneByName = (id: string | null) => meta.people.find((p) => p.id === id)?.display_name;
+  const doneByName = (id: string | null) =>
+    meta.people.find((p) => p.id === id)?.display_name;
 
   return (
     <>
       <header className="mb-5 flex items-start gap-3">
-        <button onClick={onBack} className="mt-1 rounded-lg p-1 text-muted hover:bg-foreground/5" aria-label="Zurück">
+        <button
+          onClick={onBack}
+          className="mt-1 rounded-lg p-1 text-muted hover:bg-foreground/5"
+          aria-label="Zurück"
+        >
           <ArrowLeft size={20} />
         </button>
         <div className="min-w-0 flex-1">
@@ -283,7 +334,11 @@ function ListView({
               : `${open.length} offen${list.expires_on ? ` · wird am ${formatDate(list.expires_on, { day: "numeric", month: "short" })} archiviert` : ""}`}
           </p>
         </div>
-        <button onClick={onEdit} className="rounded-lg p-2 text-muted hover:bg-foreground/5" aria-label="Liste bearbeiten">
+        <button
+          onClick={onEdit}
+          className="rounded-lg p-2 text-muted hover:bg-foreground/5"
+          aria-label="Liste bearbeiten"
+        >
           <Pencil size={18} />
         </button>
       </header>
@@ -322,9 +377,17 @@ function ListView({
         </form>
       )}
 
+      {!archived && items.length > 0 && (
+        <p className="mb-3 text-xs text-muted md:hidden">
+          Tipp: nach rechts wischen = abhaken, nach links = löschen
+        </p>
+      )}
+
       {!archived && open.length === 0 && done.length > 0 && (
         <div className="mb-4 flex flex-wrap items-center gap-3 rounded-2xl border border-accent/40 bg-accent/10 p-4 text-sm">
-          <span className="flex-1">Alles erledigt. Liste ins Archiv verschieben?</span>
+          <span className="flex-1">
+            Alles erledigt. Liste ins Archiv verschieben?
+          </span>
           <button
             onClick={() => setArchived(true)}
             className="flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 font-medium text-accent-foreground"
@@ -337,7 +400,13 @@ function ListView({
       {open.length > 0 && (
         <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
           {open.map((i) => (
-            <ItemRow key={i.id} item={i} onToggle={() => toggle(i)} onDelete={() => removeItem(i.id)} readOnly={archived} />
+            <ItemRow
+              key={i.id}
+              item={i}
+              onToggle={() => toggle(i)}
+              onDelete={() => removeItem(i)}
+              readOnly={archived}
+            />
           ))}
         </ul>
       )}
@@ -345,12 +414,22 @@ function ListView({
       {done.length > 0 && (
         <section className="mt-6">
           <div className="flex items-center gap-2">
-            <button onClick={() => setShowDone((s) => !s)} className="flex flex-1 items-center gap-2 text-sm font-medium text-muted">
-              {showDone ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+            <button
+              onClick={() => setShowDone((s) => !s)}
+              className="flex flex-1 items-center gap-2 text-sm font-medium text-muted"
+            >
+              {showDone ? (
+                <ChevronDown size={16} />
+              ) : (
+                <ChevronRight size={16} />
+              )}
               Erledigt ({done.length})
             </button>
             {showDone && !archived && (
-              <button onClick={clearDone} className="text-xs text-muted hover:text-red-600">
+              <button
+                onClick={clearDone}
+                className="text-xs text-muted hover:text-red-600"
+              >
                 Erledigte löschen
               </button>
             )}
@@ -361,9 +440,14 @@ function ListView({
                 <ItemRow
                   key={i.id}
                   item={i}
-                  sub={[doneByName(i.done_by), i.done_at && formatDate(i.done_at.slice(0, 10))].filter(Boolean).join(" · ")}
+                  sub={[
+                    doneByName(i.done_by),
+                    i.done_at && formatDate(i.done_at.slice(0, 10)),
+                  ]
+                    .filter(Boolean)
+                    .join(" · ")}
                   onToggle={() => toggle(i)}
-                  onDelete={() => removeItem(i.id)}
+                  onDelete={() => removeItem(i)}
                   readOnly={archived}
                 />
               ))}
@@ -401,26 +485,44 @@ function ItemRow({
 }) {
   const done = Boolean(item.done_at);
   return (
-    <li className="flex items-center gap-3 px-4 py-3">
-      <button
-        onClick={onToggle}
+    <li>
+      <SwipeRow
+        onSwipeRight={onToggle}
+        onSwipeLeft={onDelete}
+        rightLabel={done ? "Wieder offen" : "Erledigt"}
+        rightIsUndo={done}
         disabled={readOnly}
-        className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2 ${
-          done ? "border-accent bg-accent text-accent-foreground" : "border-border"
-        }`}
-        aria-label={done ? "Als offen markieren" : "Abhaken"}
       >
-        {done && <Check size={14} strokeWidth={3} />}
-      </button>
-      <span className="min-w-0 flex-1">
-        <span className={`block ${done ? "text-muted line-through" : ""}`}>{item.text}</span>
-        {sub && <span className="block text-xs text-muted">{sub}</span>}
-      </span>
-      {!readOnly && (
-        <button onClick={onDelete} className="rounded p-1 text-muted hover:text-red-600" aria-label="Löschen">
-          <X size={16} />
-        </button>
-      )}
+        <div className="flex items-center gap-3 px-4 py-3">
+          <button
+            onClick={onToggle}
+            disabled={readOnly}
+            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2 ${
+              done
+                ? "border-accent bg-accent text-accent-foreground"
+                : "border-border"
+            }`}
+            aria-label={done ? "Als offen markieren" : "Abhaken"}
+          >
+            {done && <Check size={14} strokeWidth={3} />}
+          </button>
+          <span className="min-w-0 flex-1">
+            <span className={`block ${done ? "text-muted line-through" : ""}`}>
+              {item.text}
+            </span>
+            {sub && <span className="block text-xs text-muted">{sub}</span>}
+          </span>
+          {!readOnly && (
+            <button
+              onClick={onDelete}
+              className="rounded p-1 text-muted hover:text-red-600"
+              aria-label="Löschen"
+            >
+              <X size={16} />
+            </button>
+          )}
+        </div>
+      </SwipeRow>
     </li>
   );
 }
@@ -446,38 +548,72 @@ function ListDialog({
   async function save(e: React.FormEvent) {
     e.preventDefault();
     if (!name.trim()) return;
-    const row = { name: name.trim(), emoji: emoji.trim() || null, expires_on: expires || null };
+    const row = {
+      name: name.trim(),
+      emoji: emoji.trim() || null,
+      expires_on: expires || null,
+    };
     const supabase = getSupabase();
     const { data, error } = list
-      ? await supabase.from("lists").update(row).eq("id", list.id).select("id").single()
-      : await supabase.from("lists").insert({ ...row, sort: Date.now() / 1000 }).select("id").single();
+      ? await supabase
+          .from("lists")
+          .update(row)
+          .eq("id", list.id)
+          .select("id")
+          .single()
+      : await supabase
+          .from("lists")
+          .insert({ ...row, sort: Date.now() / 1000 })
+          .select("id")
+          .single();
     if (error) {
       setError("Speichern hat nicht geklappt: " + error.message);
       return;
     }
-    if (!list) notifyPartner("Neue Liste", `${row.emoji ?? "📝"} ${row.name}`, "/listen");
+    if (!list)
+      notifyPartner(
+        "Neue Liste",
+        `${row.emoji ?? "📝"} ${row.name}`,
+        "/listen",
+      );
+    toastSaved(list ? "Gespeichert" : "Liste angelegt");
     onSaved(data.id as string);
     onClose();
   }
 
   async function remove() {
     if (!list) return;
-    if (!window.confirm(`Liste „${list.name}“ mit allen Einträgen endgültig löschen?`)) return;
-    await getSupabase().from("lists").delete().eq("id", list.id);
+    const ok = await deleteWithUndo({
+      table: "lists",
+      ids: [list.id],
+      message: `Liste „${list.name}“ gelöscht`,
+      dependents: [{ table: "list_items", fk: "list_id", mode: "restore" }],
+    });
+    if (!ok) return;
     onDeleted?.();
     onClose();
   }
 
   return (
-    <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/40 sm:items-center sm:p-4" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-40 flex items-end justify-center bg-black/40 sm:items-center sm:p-4"
+      onClick={onClose}
+    >
       <form
         onSubmit={save}
         onClick={(e) => e.stopPropagation()}
-        className="pb-safe w-full max-w-lg space-y-4 rounded-t-2xl bg-card p-5 shadow-xl sm:rounded-2xl"
+        className="pb-safe w-full max-w-lg space-y-4 sheet-in rounded-t-2xl bg-card p-5 shadow-xl sm:rounded-2xl"
       >
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">{list ? "Liste bearbeiten" : "Neue Liste"}</h2>
-          <button type="button" onClick={onClose} className="p-1 text-muted" aria-label="Schließen">
+          <h2 className="text-lg font-semibold">
+            {list ? "Liste bearbeiten" : "Neue Liste"}
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            className="p-1 text-muted"
+            aria-label="Schließen"
+          >
             <X size={20} />
           </button>
         </div>
@@ -499,22 +635,42 @@ function ListDialog({
           />
         </div>
         <label className="block space-y-1">
-          <span className="text-sm text-muted">Automatisch archivieren nach (optional)</span>
-          <input type="date" value={expires} onChange={(e) => setExpires(e.target.value)} className={input} />
-          <span className="block text-xs text-muted">z. B. das Urlaubsende bei einer Packliste</span>
+          <span className="text-sm text-muted">
+            Automatisch archivieren nach (optional)
+          </span>
+          <input
+            type="date"
+            value={expires}
+            onChange={(e) => setExpires(e.target.value)}
+            className={input}
+          />
+          <span className="block text-xs text-muted">
+            z. B. das Urlaubsende bei einer Packliste
+          </span>
         </label>
         {error && <p className="text-sm text-red-600">{error}</p>}
         <div className="flex items-center gap-3">
           {list && (
-            <button type="button" onClick={remove} className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-500/10">
+            <button
+              type="button"
+              onClick={remove}
+              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-500/10"
+            >
               <Trash2 size={16} /> Löschen
             </button>
           )}
           <div className="flex-1" />
-          <button type="button" onClick={onClose} className="rounded-lg px-4 py-2 text-sm text-muted hover:bg-foreground/5">
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-lg px-4 py-2 text-sm text-muted hover:bg-foreground/5"
+          >
             Abbrechen
           </button>
-          <button type="submit" className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground">
+          <button
+            type="submit"
+            className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground"
+          >
             Speichern
           </button>
         </div>

@@ -27,14 +27,12 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/einstellungen", label: "Einstellungen", icon: Settings },
 ];
 
-/** Untere Leiste am Handy: die vier wichtigsten + „Mehr“. */
-export const MOBILE_NAV: NavItem[] = [
-  NAV_ITEMS[0],
-  NAV_ITEMS[1],
-  NAV_ITEMS[2],
-  NAV_ITEMS[3],
-  { href: "/mehr", label: "Mehr", icon: MoreHorizontal },
-];
+export const MORE_ITEM: NavItem = { href: "/mehr", label: "Mehr", icon: MoreHorizontal };
+
+/** Bereiche, die in die untere Leiste dürfen (Einstellungen bleibt unter „Mehr“). */
+export const BAR_CHOICES = NAV_ITEMS.filter((i) => i.href !== "/einstellungen");
+export const DEFAULT_BAR = ["/", "/kalender", "/battles", "/listen"];
+export const BAR_SIZE = 4;
 
 export function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);

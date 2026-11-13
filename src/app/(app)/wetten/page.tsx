@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, ChevronDown, ChevronRight, Crown, Gift, Plus } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
+import { SkeletonList } from "@/components/skeleton";
 import { DeleteButton, ErrorBox, Field, Modal, SaveButtons, inputClass } from "@/components/ui";
 import { getSupabase } from "@/lib/supabase/client";
 import { useTable } from "@/lib/use-table";
@@ -10,6 +11,8 @@ import { useToday } from "@/lib/use-today";
 import { useCalendarMeta, type Person } from "@/lib/use-calendar-meta";
 import { formatDate } from "@/lib/calendar";
 import { notifyPartner } from "@/lib/push-client";
+import { deleteWithUndo } from "@/lib/undo";
+import { toastSaved } from "@/lib/toast";
 
 type Bet = {
   id: string;
@@ -109,7 +112,7 @@ export default function WettenPage() {
 
       <h2 className="mb-2 text-sm font-medium text-muted">Laufende Wetten</h2>
       {loading ? (
-        <p className="text-sm text-muted">Lädt …</p>
+        <SkeletonList />
       ) : open.length === 0 && !error ? (
         <button
           onClick={() => setEdit({ bet: null })}
@@ -224,12 +227,14 @@ function BetDialog({ bet, people, onClose }: { bet: Bet | null; people: Person[]
       : await getSupabase().from("bets").insert(row);
     if (error) return setError(error.message);
     if (!bet) notifyPartner("Neue Wette", row.stake ? `${row.title} · Einsatz: ${row.stake}` : row.title, "/wetten");
+    toastSaved(bet ? "Gespeichert" : "Wette angelegt");
     onClose();
   }
 
   async function remove() {
-    if (!bet || !window.confirm(`Wette „${bet.title}“ löschen?`)) return;
-    await getSupabase().from("bets").delete().eq("id", bet.id);
+    if (!bet) return;
+    const ok = await deleteWithUndo({ table: "bets", ids: [bet.id], message: `„${bet.title}“ gelöscht` });
+    if (!ok) return;
     onClose();
   }
 
@@ -303,6 +308,7 @@ function ResolveDialog({
       const result = choice === "draw" ? "Unentschieden" : `${people.find((p) => p.id === choice)?.display_name} gewinnt`;
       notifyPartner("Wette aufgelöst", `${bet.title}: ${result}`, "/wetten");
     }
+    toastSaved();
     onClose();
   }
 

@@ -1,12 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
-import { MOBILE_NAV, NAV_ITEMS } from "@/lib/nav";
+import { NAV_ITEMS } from "@/lib/nav";
+import { useBarHrefs } from "@/lib/use-nav-bar";
 
 export default function MehrPage() {
-  const items = NAV_ITEMS.filter(
-    (i) => !MOBILE_NAV.some((m) => m.href === i.href),
-  );
+  const bar = useBarHrefs();
+  const items = NAV_ITEMS.filter((i) => !bar.includes(i.href));
 
   return (
     <>

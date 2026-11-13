@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { getSupabase } from "@/lib/supabase/client";
+import { deleteWithUndo } from "@/lib/undo";
+import { toastSaved } from "@/lib/toast";
 import {
   AGGREGATES,
   PERIODS,
@@ -62,17 +64,19 @@ export function BattleDialog({
       return;
     }
     onSaved(data.id as string);
+    toastSaved(battle ? "Gespeichert" : "Battle angelegt");
     onClose();
   }
 
   async function remove() {
     if (!battle) return;
-    if (!window.confirm(`Battle „${battle.name}“ mit allen Einträgen endgültig löschen?`)) return;
-    const { error } = await getSupabase().from("battles").delete().eq("id", battle.id);
-    if (error) {
-      setError("Löschen hat nicht geklappt: " + error.message);
-      return;
-    }
+    const ok = await deleteWithUndo({
+      table: "battles",
+      ids: [battle.id],
+      message: `Battle „${battle.name}“ gelöscht`,
+      dependents: [{ table: "battle_entries", fk: "battle_id", mode: "restore" }],
+    });
+    if (!ok) return;
     onDeleted?.();
     onClose();
   }
@@ -85,7 +89,7 @@ export function BattleDialog({
       <form
         onSubmit={save}
         onClick={(e) => e.stopPropagation()}
-        className="pb-safe max-h-[92dvh] w-full max-w-lg space-y-4 overflow-y-auto rounded-t-2xl bg-card p-5 shadow-xl sm:rounded-2xl"
+        className="pb-safe max-h-[92dvh] w-full max-w-lg space-y-4 overflow-y-auto sheet-in rounded-t-2xl bg-card p-5 shadow-xl sm:rounded-2xl"
       >
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">{battle ? "Battle bearbeiten" : "Neues Battle"}</h2>

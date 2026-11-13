@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Crown, Pencil, Trash2 } from "lucide-react";
 import { BattleDialog } from "@/components/battle-dialog";
+import { SkeletonList } from "@/components/skeleton";
 import { Duel, leadText } from "@/components/battle-ui";
 import { getSupabase } from "@/lib/supabase/client";
 import { useBattles } from "@/lib/use-battles";
@@ -13,6 +14,8 @@ import { useProfiles } from "@/lib/use-profile";
 import { useToday } from "@/lib/use-today";
 import { formatDate } from "@/lib/calendar";
 import { notifyPartner } from "@/lib/push-client";
+import { deleteWithUndo } from "@/lib/undo";
+import { toastSaved } from "@/lib/toast";
 import {
   AGGREGATES,
   computeResults,
@@ -45,7 +48,7 @@ export function BattleDetail({ params }: { params: Promise<{ id: string }> }) {
     [battle, myEntries, ids, today],
   );
 
-  if (loading || !today) return null;
+  if (loading || !today) return <SkeletonList rows={3} className="h-40" />;
   if (error) return <p className="text-sm text-red-600">{error}</p>;
   if (!battle) {
     return (
@@ -320,7 +323,8 @@ function EntryForm({
     }
     setValue("");
     setNote("");
-    setStatus("Eingetragen.");
+    setStatus(null);
+    toastSaved("Eingetragen");
     const whoName = people.find((p) => p.id === who)?.display_name;
     notifyPartner(
       `${battle.emoji ?? "🏆"} ${battle.name}`,
@@ -409,8 +413,7 @@ function EntryList({
   );
 
   async function remove(id: string) {
-    if (!window.confirm("Eintrag löschen?")) return;
-    await getSupabase().from("battle_entries").delete().eq("id", id);
+    await deleteWithUndo({ table: "battle_entries", ids: [id], message: "Eintrag gelöscht" });
   }
 
   return (

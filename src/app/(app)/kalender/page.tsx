@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, MapPin, Plus, Repeat, Timer } from "lucide-react";
 import { EventDialog } from "@/components/event-dialog";
 import { PageHeader } from "@/components/page-header";
+import { SkeletonList } from "@/components/skeleton";
 import { useEvents } from "@/lib/use-events";
 import { useToday } from "@/lib/use-today";
 import { useCalendarMeta } from "@/lib/use-calendar-meta";
@@ -211,7 +212,7 @@ export default function KalenderPage() {
           <section>
             <h3 className="mb-2 text-sm font-medium">Demnächst</h3>
             {loading && events.length === 0 ? (
-              <p className="text-sm text-muted">Lädt …</p>
+              <SkeletonList />
             ) : upcoming.length === 0 ? (
               <p className="text-sm text-muted">In den nächsten 60 Tagen steht nichts an.</p>
             ) : (

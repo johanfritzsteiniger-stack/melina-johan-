@@ -11,6 +11,7 @@ import { useBattles } from "@/lib/use-battles";
 import { computeResults, isArchived } from "@/lib/battles";
 import { leadText } from "@/components/battle-ui";
 import { TogetherCard } from "@/components/together-card";
+import { QuickAdd } from "@/components/quick-add";
 import { useTable } from "@/lib/use-table";
 import { LIST_COLUMNS, isListArchived, type List, type ListItem } from "@/lib/lists";
 import { EXPENSE_COLUMNS, balance, euro, type Expense } from "@/lib/expenses";
@@ -200,6 +201,8 @@ export default function DashboardPage() {
           </p>
         </Card>
       </div>
+
+      <QuickAdd />
     </>
   );
 }

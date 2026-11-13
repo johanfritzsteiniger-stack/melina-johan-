@@ -27,7 +27,7 @@ export function Modal({
           onSubmit(e);
         }}
         onClick={(e) => e.stopPropagation()}
-        className="pb-safe max-h-[92dvh] w-full max-w-lg space-y-4 overflow-y-auto rounded-t-2xl bg-card p-5 shadow-xl sm:rounded-2xl"
+        className="pb-safe max-h-[92dvh] w-full max-w-lg space-y-4 overflow-y-auto sheet-in rounded-t-2xl bg-card p-5 shadow-xl sm:rounded-2xl"
       >
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">{title}</h2>

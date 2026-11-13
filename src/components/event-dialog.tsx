@@ -8,6 +8,8 @@ import { RECURRENCES, type CalendarEvent, type Category, type Recurrence } from 
 import type { Person } from "@/lib/use-calendar-meta";
 import { REMINDER_OPTIONS } from "@/lib/reminders";
 import { notifyPartner } from "@/lib/push-client";
+import { deleteWithUndo } from "@/lib/undo";
+import { toastSaved } from "@/lib/toast";
 import { formatDate } from "@/lib/calendar";
 
 type Props = {
@@ -116,6 +118,7 @@ export function EventDialog({
       return;
     }
     onSaved(data as CalendarEvent);
+    toastSaved(event ? "Gespeichert" : "Termin angelegt");
     if (!event) {
       notifyPartner("Neuer Termin", `${row.title} · ${formatDate(row.start_date, { weekday: "short", day: "numeric", month: "short" })}`, "/kalender");
     }
@@ -124,12 +127,8 @@ export function EventDialog({
 
   async function remove() {
     if (!event) return;
-    if (!window.confirm(`„${event.title}“ wirklich löschen?`)) return;
-    const { error } = await getSupabase().from("events").delete().eq("id", event.id);
-    if (error) {
-      setError("Löschen hat nicht geklappt: " + error.message);
-      return;
-    }
+    const ok = await deleteWithUndo({ table: "events", ids: [event.id], message: `„${event.title}“ gelöscht` });
+    if (!ok) return;
     onDeleted(event.id);
     onClose();
   }
@@ -142,7 +141,7 @@ export function EventDialog({
       <form
         onSubmit={save}
         onClick={(e) => e.stopPropagation()}
-        className="pb-safe max-h-[92dvh] w-full max-w-lg space-y-4 overflow-y-auto rounded-t-2xl bg-card p-5 shadow-xl sm:rounded-2xl"
+        className="pb-safe max-h-[92dvh] w-full max-w-lg space-y-4 overflow-y-auto sheet-in rounded-t-2xl bg-card p-5 shadow-xl sm:rounded-2xl"
       >
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">

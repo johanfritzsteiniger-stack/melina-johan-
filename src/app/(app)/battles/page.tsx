@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Crown, Plus } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
+import { SkeletonList } from "@/components/skeleton";
 import { BattleDialog } from "@/components/battle-dialog";
 import { BattleCard } from "@/components/battle-ui";
 import { useBattles } from "@/lib/use-battles";
@@ -87,7 +88,7 @@ export default function BattlesPage() {
       )}
 
       {loading ? (
-        <p className="text-sm text-muted">Lädt …</p>
+        <SkeletonList />
       ) : active.length === 0 && !error ? (
         <button
           onClick={() => setCreating(true)}
