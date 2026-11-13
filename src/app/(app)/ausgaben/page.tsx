@@ -90,8 +90,8 @@ export default function AusgabenPage() {
       {error && <ErrorBox text={error} />}
 
       {/* Saldo */}
-      <section className="mb-6 rounded-2xl border border-border bg-card p-5">
-        <p className="text-sm text-muted">Aktueller Stand</p>
+      <section className="mb-6 rounded-2xl bg-soft p-5 text-soft-foreground">
+        <p className="text-sm opacity-80">Aktueller Stand</p>
         {bal ? (
           <>
             <p className="mt-1 flex flex-wrap items-center gap-2 text-xl font-semibold">
@@ -111,7 +111,7 @@ export default function AusgabenPage() {
         ) : (
           <p className="mt-1 text-xl font-semibold">Ihr seid quitt</p>
         )}
-        <p className="mt-3 text-xs text-muted">
+        <p className="mt-3 text-xs opacity-80">
           {open.length} offene Ausgaben · diesen Monat gesamt {euro(monthTotal)}
         </p>
       </section>

@@ -1,24 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #18181b;
+  /* Stil B: warm und weich */
+  --background: #fbf5ee;
+  --foreground: #3b2a20;
   --card: #ffffff;
-  --muted: #71717a;
-  --border: #e4e4e7;
-  --accent: #0d9488;
+  --muted: #9a7b66;
+  --border: #f0e4d6;
+  --accent: #c2603e;
   --accent-foreground: #ffffff;
+  --soft: #f4dccb;
+  --soft-foreground: #5c2a16;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #09090b;
-    --foreground: #f4f4f5;
-    --card: #18181b;
-    --muted: #a1a1aa;
-    --border: #27272a;
-    --accent: #2dd4bf;
-    --accent-foreground: #042f2e;
+    --background: #1b1411;
+    --foreground: #f5ebe2;
+    --card: #261d18;
+    --muted: #b59c88;
+    --border: #3a2d25;
+    --accent: #e07a55;
+    --accent-foreground: #1b1411;
+    --soft: #3d2a20;
+    --soft-foreground: #f4dccb;
   }
 }
 
@@ -30,7 +35,13 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-soft: var(--soft);
+  --color-soft-foreground: var(--soft-foreground);
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Weichere Ecken überall */
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
 }
 
 body {

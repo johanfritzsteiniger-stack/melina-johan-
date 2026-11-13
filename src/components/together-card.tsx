@@ -49,15 +49,15 @@ export function TogetherCard({ since, today }: { since: string | null; today: st
   ].filter(Boolean) as string[];
 
   return (
-    <section className="mb-6 rounded-2xl border border-border bg-card p-5">
-      <div className="flex items-center gap-2 text-sm text-muted">
+    <section className="mb-6 rounded-2xl bg-soft p-5 text-soft-foreground">
+      <div className="flex items-center gap-2 text-sm opacity-80">
         <Heart size={16} className="text-accent" />
         Zusammen seit {formatDate(since, { day: "numeric", month: "long", year: "numeric" })}
       </div>
       <p className="mt-2 text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">
         {parts.join(" · ")}
       </p>
-      <p className="mt-1 text-sm text-muted">
+      <p className="mt-1 text-sm opacity-80">
         {total.toLocaleString("de-DE")} Tage insgesamt ·{" "}
         {toAnniversary === 0
           ? `heute ${nextNumber}. Jahrestag`

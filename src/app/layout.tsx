@@ -11,15 +11,15 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
   icons: {
-    icon: "/icons/icon-192.png",
+    icon: "/icons/favicon.png",
     apple: "/icons/apple-touch-icon.png",
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
-    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+    { media: "(prefers-color-scheme: light)", color: "#fbf5ee" },
+    { media: "(prefers-color-scheme: dark)", color: "#1b1411" },
   ],
   width: "device-width",
   initialScale: 1,

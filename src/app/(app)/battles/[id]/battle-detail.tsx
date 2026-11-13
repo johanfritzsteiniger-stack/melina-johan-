@@ -101,7 +101,7 @@ export function BattleDetail({ params }: { params: Promise<{ id: string }> }) {
       <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
         <div className="space-y-6">
           {/* Aktueller Zeitraum */}
-          <section className="rounded-2xl border border-border bg-card p-5">
+          <section className="rounded-2xl bg-soft p-5 text-soft-foreground">
             <div className="mb-1 flex items-baseline justify-between gap-2">
               <h2 className="font-semibold">
                 {battle.period === "none" ? "Stand" : currentLabel?.title}

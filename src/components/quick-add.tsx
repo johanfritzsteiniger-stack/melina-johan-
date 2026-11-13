@@ -40,7 +40,7 @@ export function QuickAdd() {
       {menu && (
         <div className="fixed inset-0 z-30 bg-black/30" onClick={() => setMenu(false)}>
           <div
-            className="sheet-in pb-safe absolute right-4 bottom-40 w-64 overflow-hidden rounded-2xl bg-card shadow-xl md:bottom-24"
+            className="sheet-in pb-safe absolute right-4 bottom-44 w-64 overflow-hidden rounded-2xl bg-card shadow-xl md:bottom-24"
             onClick={(e) => e.stopPropagation()}
           >
             {OPTIONS.map(({ kind, label, icon: Icon }) => (
@@ -60,7 +60,7 @@ export function QuickAdd() {
       <button
         onClick={() => setMenu((m) => !m)}
         aria-label={menu ? "Schließen" : "Schnell hinzufügen"}
-        className="fixed right-4 bottom-24 z-30 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg transition-transform active:scale-95 md:right-8 md:bottom-8"
+        className="fixed right-4 bottom-28 z-30 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg transition-transform active:scale-95 md:right-8 md:bottom-8"
       >
         {menu ? <X size={24} /> : <Plus size={26} />}
       </button>
