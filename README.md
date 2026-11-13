@@ -1,0 +1,43 @@
+# Melina & Johan
+
+Unsere gemeinsame Web-App: Kalender mit Countdowns, Battles, Listen, Ausgaben, Ideen, Watchlist und Wetten.
+
+**Stack:** Next.js (App Router), TypeScript, Tailwind CSS, Supabase (Datenbank + Login), Vercel (Hosting).
+
+## Einrichtung
+
+### 1. Supabase
+
+1. Im Supabase-Projekt den **SQL Editor** öffnen und `supabase/migrations/0001_profiles.sql` einfügen und ausführen.
+2. **Authentication → Sign In / Providers → Email:** „Allow new users to sign up“ **ausschalten**, damit sich niemand Fremdes registrieren kann.
+3. **Authentication → Users → Add user → Create new user:** einen Nutzer für Melina und einen für Johan anlegen (E-Mail, Passwort, „Auto Confirm User“ anhaken).
+4. Unter **Project Settings → API Keys** die Projekt-URL und den **Publishable Key** kopieren.
+
+### 2. Vercel
+
+1. Auf vercel.com mit GitHub anmelden → **Add New → Project** → dieses Repo importieren.
+2. Bei **Environment Variables** eintragen:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+3. **Deploy** klicken. Danach wird jede Änderung im Repo automatisch veröffentlicht.
+
+### 3. Auf dem Handy installieren
+
+- **iPhone (Safari):** Teilen → „Zum Home-Bildschirm“
+- **Android (Chrome):** Menü → „App installieren“
+
+## Lokal starten (optional)
+
+```bash
+cp .env.example .env.local   # Werte eintragen
+npm install
+npm run dev
+```
+
+## Fahrplan
+
+- [x] Schritt 2: Login, Dashboard, Layout für Handy und PC
+- [ ] Schritt 3: Kalender und Countdowns
+- [ ] Schritt 4: Battles (inkl. Spotify-Minuten)
+- [ ] Schritt 5: Listen, Ausgaben, Ideen, Watchlist, Wetten
+- [ ] Schritt 6: Push-Erinnerungen
