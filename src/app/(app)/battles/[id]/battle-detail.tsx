@@ -16,6 +16,7 @@ import {
   AGGREGATES,
   computeResults,
   formatValue,
+  isEnded,
   periodLabel,
   periodYear,
   summarize,
@@ -79,6 +80,8 @@ export function BattleDetail({ params }: { params: Promise<{ id: string }> }) {
           <p className="mt-1 text-sm text-muted">
             {battle.period === "week" ? "Wöchentlich" : battle.period === "month" ? "Monatlich" : "Gesamtstand"} ·{" "}
             {battle.higher_wins ? "mehr gewinnt" : "weniger gewinnt"} · {AGGREGATES[battle.aggregate].toLowerCase()}
+            {battle.end_date &&
+              ` · ${isEnded(battle, today) ? "beendet am" : "endet am"} ${formatDate(battle.end_date, { day: "numeric", month: "short", year: "numeric" })}`}
             {battle.archived && " · archiviert"}
           </p>
         </div>
@@ -109,7 +112,7 @@ export function BattleDetail({ params }: { params: Promise<{ id: string }> }) {
           </section>
 
           {/* Am Handy: Eintragen direkt unter dem aktuellen Stand */}
-          {!battle.archived && (
+          {!battle.archived && !isEnded(battle, today) && (
             <div className="lg:hidden">
               <EntryForm battle={battle} today={today} people={meta.people} personColor={meta.personColor} />
             </div>
@@ -119,7 +122,7 @@ export function BattleDetail({ params }: { params: Promise<{ id: string }> }) {
           {battle.period !== "none" && (
             <section className="rounded-2xl border border-border bg-card p-5">
               <div className="mb-4 flex items-center justify-between gap-2">
-                <h2 className="font-semibold">Auswertung</h2>
+                <h2 className="font-semibold">Saison {shownYear}</h2>
                 {years.length > 1 && (
                   <select
                     value={shownYear}
@@ -168,7 +171,7 @@ export function BattleDetail({ params }: { params: Promise<{ id: string }> }) {
         </div>
 
         <aside className="space-y-6">
-          {!battle.archived && (
+          {!battle.archived && !isEnded(battle, today) && (
             <div className="hidden lg:block">
               <EntryForm battle={battle} today={today} people={meta.people} personColor={meta.personColor} />
             </div>

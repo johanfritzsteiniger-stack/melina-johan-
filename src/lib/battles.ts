@@ -14,6 +14,7 @@ export type Battle = {
   higher_wins: boolean;
   archived: boolean;
   sort: number;
+  end_date: string | null;
 };
 
 export type Entry = {
@@ -98,6 +99,16 @@ export function periodLabel(key: string, period: Period): { title: string; sub: 
   return { title: "Gesamt", sub: "" };
 }
 
+/** Battle ist vorbei (Enddatum überschritten). */
+export function isEnded(battle: Battle, today: string): boolean {
+  return Boolean(battle.end_date && today && today > battle.end_date);
+}
+
+/** Landet im Archiv: manuell archiviert oder Enddatum vorbei. */
+export function isArchived(battle: Battle, today: string): boolean {
+  return battle.archived || isEnded(battle, today);
+}
+
 // ---------- Wertung ----------
 
 export type PeriodResult = {
@@ -148,18 +159,20 @@ export function computeResults(
     return groups.get(key)!;
   };
 
+  const ended = isEnded(battle, today);
   for (const e of entries) {
+    if (battle.end_date && e.date > battle.end_date) continue; // nach Ende zählt nichts mehr
     const g = ensure(periodKey(e.date, battle.period));
     if (!g.has(e.person_id)) g.set(e.person_id, []);
     g.get(e.person_id)!.push(Number(e.value));
   }
-  if (today) ensure(periodKey(today, battle.period));
+  if (today && !ended) ensure(periodKey(today, battle.period));
 
   return [...groups.entries()]
     .map(([key, byPerson]) => {
       const values: Record<string, number | null> = {};
       for (const [id, vals] of byPerson) values[id] = aggregate(vals, battle);
-      const finished = battle.period !== "none" && today > periodEnd(key, battle.period);
+      const finished = ended || (battle.period !== "none" && today > periodEnd(key, battle.period));
       const leader = decide(values, battle);
       return { key, values, leader, winner: finished ? leader : null, finished };
     })
@@ -187,6 +200,44 @@ export function summarize(results: PeriodResult[], personIds: string[]): Summary
     else wins[r.winner] = (wins[r.winner] ?? 0) + 1;
   }
   return { wins, draws, totals, played };
+}
+
+export type Season = {
+  year: number;
+  summary: Summary;
+  /** Saisonsieger nach Anzahl Siege, "draw" bei Gleichstand */
+  champion: string | "draw" | null;
+};
+
+/** Abgeschlossene Saisons (Kalenderjahre vor dem aktuellen bzw. bis zum Enddatum). */
+export function seasons(
+  battle: Battle,
+  results: PeriodResult[],
+  personIds: string[],
+  today: string,
+): Season[] {
+  if (battle.period === "none" || !today) return [];
+  const currentYear = Number(today.slice(0, 4));
+  const ended = isEnded(battle, today);
+  const years = [...new Set(results.map((r) => periodYear(r.key, battle.period)))];
+  return years
+    .filter((y) => y < currentYear || ended)
+    .sort((a, b) => b - a)
+    .map((year) => {
+      const summary = summarize(
+        results.filter((r) => periodYear(r.key, battle.period) === year),
+        personIds,
+      );
+      return { year, summary, champion: championOf(summary, personIds) };
+    })
+    .filter((s) => s.summary.played > 0);
+}
+
+export function championOf(summary: Summary, personIds: string[]): string | "draw" | null {
+  if (summary.played === 0) return null;
+  const sorted = [...personIds].sort((a, b) => (summary.wins[b] ?? 0) - (summary.wins[a] ?? 0));
+  if (sorted.length > 1 && (summary.wins[sorted[0]] ?? 0) === (summary.wins[sorted[1]] ?? 0)) return "draw";
+  return sorted[0] ?? null;
 }
 
 // ---------- Anzeige ----------

@@ -5,7 +5,7 @@ import { getSupabase } from "@/lib/supabase/client";
 import type { Battle, Entry } from "@/lib/battles";
 
 export const BATTLE_COLUMNS =
-  "id, name, emoji, unit, period, aggregate, higher_wins, archived, sort";
+  "id, name, emoji, unit, period, aggregate, higher_wins, archived, sort, end_date";
 export const ENTRY_COLUMNS = "id, battle_id, person_id, date, value, note, created_at";
 
 /** Alle Battles und Einträge, live aktualisiert. */
@@ -25,7 +25,7 @@ export function useBattles() {
     if (err) {
       setError(
         ["42P01", "PGRST205", "42703", "PGRST204"].includes(err.code)
-          ? "Die Datenbank ist nicht auf dem neuesten Stand. Bitte supabase/migrations/0005_battles.sql im SQL Editor ausführen."
+          ? "Die Datenbank ist nicht auf dem neuesten Stand. Bitte die noch nicht ausgeführten Dateien aus supabase/migrations im SQL Editor ausführen."
           : err.message,
       );
     } else {

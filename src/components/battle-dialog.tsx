@@ -34,6 +34,7 @@ export function BattleDialog({
   const [agg, setAgg] = useState<Aggregate>(battle?.aggregate ?? "sum");
   const [higherWins, setHigherWins] = useState(battle?.higher_wins ?? true);
   const [archived, setArchived] = useState(battle?.archived ?? false);
+  const [endDate, setEndDate] = useState(battle?.end_date ?? "");
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
@@ -49,6 +50,7 @@ export function BattleDialog({
       aggregate: agg,
       higher_wins: higherWins,
       archived,
+      end_date: endDate || null,
     };
     const supabase = getSupabase();
     const { data, error } = battle
@@ -162,6 +164,15 @@ export function BattleDialog({
             ))}
           </div>
         </div>
+
+        <label className="block space-y-1">
+          <span className="text-sm text-muted">Enddatum (optional)</span>
+          <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className={input} />
+          <span className="block text-xs text-muted">
+            Danach wandert das Battle mit Endstand automatisch ins Archiv. Leer lassen für dauerhafte
+            Battles – die bekommen jedes Kalenderjahr eine eigene Saison.
+          </span>
+        </label>
 
         {battle && (
           <label className="flex items-center gap-2 text-sm">

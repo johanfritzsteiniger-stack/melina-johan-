@@ -8,7 +8,7 @@ import { useEvents } from "@/lib/use-events";
 import { useToday } from "@/lib/use-today";
 import { useCalendarMeta } from "@/lib/use-calendar-meta";
 import { useBattles } from "@/lib/use-battles";
-import { computeResults } from "@/lib/battles";
+import { computeResults, isArchived } from "@/lib/battles";
 import { leadText } from "@/components/battle-ui";
 import { TogetherCard } from "@/components/together-card";
 import {
@@ -50,7 +50,7 @@ export default function DashboardPage() {
   const battleStatus = useMemo(() => {
     const ids = meta.people.map((p) => p.id);
     return battles
-      .filter((b) => !b.archived)
+      .filter((b) => !isArchived(b, today))
       .map((battle) => {
         const results = computeResults(
           battle,
