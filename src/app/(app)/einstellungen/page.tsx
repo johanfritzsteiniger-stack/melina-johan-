@@ -18,6 +18,7 @@ export default function EinstellungenPage() {
   const { me, setMe } = useProfiles();
   const meta = useCalendarMeta();
   const router = useRouter();
+  const [sharedStatus, setSharedStatus] = useState<string | null>(null);
 
   async function logout() {
     await getSupabase().auth.signOut();
@@ -62,12 +63,14 @@ export default function EinstellungenPage() {
             <ColorPicker
               value={meta.sharedColor}
               onChange={async (color) => {
-                await getSupabase()
+                const { error } = await getSupabase()
                   .from("app_settings")
                   .upsert({ key: "shared_color", value: color });
+                setSharedStatus(error ? "Speichern hat nicht geklappt: " + error.message : "Gespeichert.");
                 meta.reload();
               }}
             />
+            {sharedStatus && <p className="text-xs text-muted">{sharedStatus}</p>}
           </div>
         </Section>
 
