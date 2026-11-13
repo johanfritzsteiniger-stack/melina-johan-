@@ -32,6 +32,8 @@ export default function EinstellungenPage() {
       <div className="space-y-6">
         {me && <ProfileSection key={me.id} me={me} onSaved={setMe} />}
 
+        <TogetherSection key={meta.togetherSince ?? "leer"} since={meta.togetherSince} reload={meta.reload} />
+
         <Section title="Kalender-Farben">
           <div className="space-y-2">
             <span className="text-sm font-medium">Termine färben nach</span>
@@ -95,6 +97,46 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 className="font-semibold">{title}</h2>
       {children}
     </section>
+  );
+}
+
+// ---------- Zusammen seit ----------
+
+function TogetherSection({ since, reload }: { since: string | null; reload: () => void }) {
+  const [date, setDate] = useState(since ?? "");
+  const [status, setStatus] = useState<string | null>(null);
+
+  async function save(e: React.FormEvent) {
+    e.preventDefault();
+    const supabase = getSupabase();
+    const { error } = date
+      ? await supabase.from("app_settings").upsert({ key: "together_since", value: date })
+      : await supabase.from("app_settings").delete().eq("key", "together_since");
+    setStatus(error ? "Speichern hat nicht geklappt: " + error.message : "Gespeichert.");
+    reload();
+  }
+
+  return (
+    <Section title="Zusammen seit">
+      <form onSubmit={save} className="flex gap-2">
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => {
+            setDate(e.target.value);
+            setStatus(null);
+          }}
+          className={input}
+        />
+        <button
+          type="submit"
+          className="shrink-0 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground"
+        >
+          Speichern
+        </button>
+      </form>
+      <p className="text-xs text-muted">{status ?? "Wird auf der Startseite angezeigt und zählt automatisch weiter."}</p>
+    </Section>
   );
 }
 

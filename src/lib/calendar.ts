@@ -223,3 +223,16 @@ export function monthGrid(year: number, month0: number): string[] {
 }
 
 export const WEEKDAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+
+/** Zeitspanne in Jahren, Monaten und Tagen (z. B. für "zusammen seit"). */
+export function yearsMonthsDays(from: string, to: string): { years: number; months: number; days: number } {
+  const [fy, fm] = from.split("-").map(Number);
+  const [ty, tm] = to.split("-").map(Number);
+  let months = (ty - fy) * 12 + (tm - fm);
+  let anchor = shiftMonths(from, months, true)!;
+  if (anchor > to) {
+    months -= 1;
+    anchor = shiftMonths(from, months, true)!;
+  }
+  return { years: Math.floor(months / 12), months: months % 12, days: diffDays(anchor, to) };
+}

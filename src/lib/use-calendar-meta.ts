@@ -48,7 +48,7 @@ export function useColorMode(): ColorMode {
 export function useCalendarMeta() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [people, setPeople] = useState<Person[]>([]);
-  const [sharedColor, setSharedColor] = useState(FALLBACK_SHARED);
+  const [settings, setSettings] = useState<Record<string, string>>({});
   const [loaded, setLoaded] = useState(false);
   const mode = useColorMode();
 
@@ -61,11 +61,13 @@ export function useCalendarMeta() {
         .order("sort")
         .order("created_at"),
       supabase.from("profiles").select("id, display_name, color").order("created_at"),
-      supabase.from("app_settings").select("key, value").eq("key", "shared_color"),
+      supabase.from("app_settings").select("key, value"),
     ]);
     setCategories((cats.data ?? []) as Category[]);
     setPeople((profs.data ?? []) as Person[]);
-    setSharedColor(settings.data?.[0]?.value ?? FALLBACK_SHARED);
+    setSettings(
+      Object.fromEntries((settings.data ?? []).map((r: { key: string; value: string }) => [r.key, r.value])),
+    );
     setLoaded(true);
   }, []);
 
@@ -84,6 +86,10 @@ export function useCalendarMeta() {
       supabase.removeChannel(channel);
     };
   }, [load]);
+
+  const sharedColor = settings.shared_color ?? FALLBACK_SHARED;
+  /** Datum, seit dem ihr zusammen seid (YYYY-MM-DD) oder null. */
+  const togetherSince = settings.together_since || null;
 
   const helpers = useMemo(() => {
     const catById = new Map(categories.map((c) => [c.id, c]));
@@ -116,5 +122,5 @@ export function useCalendarMeta() {
     return { categoryOf, personColor, ownerLabel, colorOf };
   }, [categories, people, sharedColor, mode]);
 
-  return { categories, people, sharedColor, mode, loaded, reload: load, ...helpers };
+  return { categories, people, sharedColor, togetherSince, mode, loaded, reload: load, ...helpers };
 }

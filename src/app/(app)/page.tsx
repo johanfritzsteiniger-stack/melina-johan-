@@ -10,6 +10,7 @@ import { useCalendarMeta } from "@/lib/use-calendar-meta";
 import { useBattles } from "@/lib/use-battles";
 import { computeResults } from "@/lib/battles";
 import { leadText } from "@/components/battle-ui";
+import { TogetherCard } from "@/components/together-card";
 import {
   addDays,
   ageAt,
@@ -76,6 +77,8 @@ export default function DashboardPage() {
           {loading ? " " : me ? `${greeting(today)}, ${me.display_name}` : greeting(today)}
         </h1>
       </header>
+
+      <TogetherCard since={meta.togetherSince} today={today} />
 
       {countdowns.length > 0 && (
         <section className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
