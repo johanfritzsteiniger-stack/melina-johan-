@@ -61,7 +61,7 @@ body {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
-.page-in { animation: fade-up 180ms ease-out both; }
+.page-in { animation: fade-up 180ms ease-out backwards; }
 .toast-in { animation: toast-in 160ms ease-out both; }
 .sheet-in { animation: sheet-in 180ms ease-out both; }
 .skeleton {
@@ -72,3 +72,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .page-in, .toast-in, .sheet-in, .skeleton { animation: none; }
 }
+@keyframes slide-from-right { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+@keyframes slide-from-left { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+.slide-next { animation: slide-from-right 180ms ease-out backwards; }
+.slide-prev { animation: slide-from-left 180ms ease-out backwards; }
+@media (prefers-reduced-motion: reduce) { .slide-next, .slide-prev { animation: none; } }

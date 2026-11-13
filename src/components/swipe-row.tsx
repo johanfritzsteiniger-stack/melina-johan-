@@ -44,7 +44,13 @@ export function SwipeRow({
     if (horizontal.current === null) {
       if (Math.abs(mx) < 8 && Math.abs(my) < 8) return;
       horizontal.current = Math.abs(mx) > Math.abs(my);
-      if (horizontal.current) (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+      if (horizontal.current) {
+        try {
+          (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+        } catch {
+          // nicht überall möglich – Geste funktioniert trotzdem
+        }
+      }
     }
     if (!horizontal.current) return;
     // Widerstand hinter der Schwelle

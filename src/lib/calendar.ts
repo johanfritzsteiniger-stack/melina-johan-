@@ -237,3 +237,17 @@ export function yearsMonthsDays(from: string, to: string): { years: number; mont
   }
   return { years: Math.floor(months / 12), months: months % 12, days: diffDays(anchor, to) };
 }
+
+/** Montag der Woche (YYYY-MM-DD). */
+export function startOfWeek(iso: string): string {
+  const offset = (fromISO(iso).getDay() + 6) % 7;
+  return addDays(iso, -offset);
+}
+
+/** Termin um n Tage verschieben (Start und Ende). */
+export function shiftDates(event: CalendarEvent, days: number): { start_date: string; end_date: string | null } {
+  return {
+    start_date: addDays(event.start_date, days),
+    end_date: event.end_date ? addDays(event.end_date, days) : null,
+  };
+}
