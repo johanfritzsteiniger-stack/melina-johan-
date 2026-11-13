@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import Link from "next/link";
-import { CalendarDays, ListChecks, Timer, Trophy } from "lucide-react";
+import { CalendarDays, ListChecks, Timer, Trophy, Wallet } from "lucide-react";
 import { useProfiles } from "@/lib/use-profile";
 import { useEvents } from "@/lib/use-events";
 import { useToday } from "@/lib/use-today";
@@ -11,6 +11,9 @@ import { useBattles } from "@/lib/use-battles";
 import { computeResults, isArchived } from "@/lib/battles";
 import { leadText } from "@/components/battle-ui";
 import { TogetherCard } from "@/components/together-card";
+import { useTable } from "@/lib/use-table";
+import { LIST_COLUMNS, isListArchived, type List, type ListItem } from "@/lib/lists";
+import { EXPENSE_COLUMNS, balance, euro, type Expense } from "@/lib/expenses";
 import {
   addDays,
   ageAt,
@@ -61,6 +64,26 @@ export default function DashboardPage() {
         return { battle, current: results.find((r) => !r.finished) ?? results[0] };
       });
   }, [battles, entries, meta.people, today]);
+
+  const lists = useTable<List>("lists", LIST_COLUMNS, [{ column: "sort" }]);
+  const items = useTable<ListItem>("list_items", "list_id, done_at", []);
+  const activeLists = useMemo(
+    () =>
+      lists.rows
+        .filter((l) => !isListArchived(l, today))
+        .map((list) => ({
+          list,
+          open: items.rows.filter((i) => i.list_id === list.id && !i.done_at).length,
+        })),
+    [lists.rows, items.rows, today],
+  );
+
+  const expenses = useTable<Expense>("expenses", EXPENSE_COLUMNS, []);
+  const bal = balance(
+    expenses.rows.filter((e) => !e.settlement_id),
+    meta.people.map((p) => p.id),
+  );
+  const personName = (id: string) => meta.people.find((p) => p.id === id)?.display_name ?? "?";
 
   const upcoming = useMemo(
     () => (today ? expand(events, today, addDays(today, 30)).slice(0, 5) : []),
@@ -147,8 +170,34 @@ export default function DashboardPage() {
           )}
         </Card>
 
-        <Card href="/listen" title="Offene Listen" icon={ListChecks}>
-          <p className="text-sm text-muted">Kommt in Schritt 5.</p>
+        <Card href="/listen" title="Listen" icon={ListChecks}>
+          {activeLists.length === 0 ? (
+            <p className="text-sm text-muted">Keine offenen Listen.</p>
+          ) : (
+            <ul className="space-y-2">
+              {activeLists.slice(0, 5).map(({ list, open }) => (
+                <li key={list.id} className="flex items-center gap-2 text-sm">
+                  <span>{list.emoji || "📝"}</span>
+                  <span className="min-w-0 flex-1 truncate">{list.name}</span>
+                  <span className="shrink-0 text-xs text-muted">{open === 0 ? "erledigt" : `${open} offen`}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+
+        <Card href="/ausgaben" title="Ausgaben" icon={Wallet}>
+          <p className="text-sm">
+            {bal ? (
+              <>
+                <span className="font-medium">{personName(bal.from)}</span> schuldet{" "}
+                <span className="font-medium">{personName(bal.to)}</span>{" "}
+                <span className="font-semibold tabular-nums">{euro(bal.amount)}</span>
+              </>
+            ) : (
+              <span className="text-muted">Ihr seid quitt.</span>
+            )}
+          </p>
         </Card>
       </div>
     </>

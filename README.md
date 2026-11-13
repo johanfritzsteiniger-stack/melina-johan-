@@ -39,5 +39,5 @@ npm run dev
 - [x] Schritt 2: Login, Dashboard, Layout für Handy und PC
 - [x] Schritt 3: Kalender und Countdowns (inkl. Personenfarben und eigenen Kategorien)
 - [x] Schritt 4: Battles (inkl. Spotify-Minuten)
-- [ ] Schritt 5: Listen, Ausgaben, Ideen, Watchlist, Wetten
+- [x] Schritt 5: Listen, Ausgaben, Ideen, Watchlist, Wetten (mit Archiv)
 - [ ] Schritt 6: Push-Erinnerungen
