@@ -6,8 +6,10 @@ import { EventDialog } from "@/components/event-dialog";
 import { PageHeader } from "@/components/page-header";
 import { useEvents } from "@/lib/use-events";
 import { useToday } from "@/lib/use-today";
+import { useCalendarMeta } from "@/lib/use-calendar-meta";
+import { useProfiles } from "@/lib/use-profile";
+import { chipStyle } from "@/lib/colors";
 import {
-  CATEGORIES,
   WEEKDAYS,
   addDays,
   ageAt,
@@ -27,6 +29,8 @@ type DialogState = { event: CalendarEvent | null; date: string } | null;
 export default function KalenderPage() {
   const today = useToday();
   const { events, loading, error, upsertLocal, removeLocal } = useEvents();
+  const meta = useCalendarMeta();
+  const { me } = useProfiles();
 
   const [month, setMonth] = useState<{ y: number; m: number } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -152,7 +156,11 @@ export default function KalenderPage() {
                   {/* Handy: Punkte */}
                   <span className="flex flex-wrap justify-center gap-0.5 sm:hidden">
                     {entries.slice(0, 4).map((o, i) => (
-                      <span key={i} className={`h-1.5 w-1.5 rounded-full ${CATEGORIES[o.event.category].dot}`} />
+                      <span
+                        key={i}
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ backgroundColor: meta.colorOf(o.event) }}
+                      />
                     ))}
                   </span>
 
@@ -166,7 +174,8 @@ export default function KalenderPage() {
                           e.stopPropagation();
                           setDialog({ event: o.event, date: day });
                         }}
-                        className={`truncate rounded px-1 py-0.5 text-[11px] leading-tight ${CATEGORIES[o.event.category].chip}`}
+                        style={chipStyle(meta.colorOf(o.event))}
+                        className="truncate rounded px-1 py-0.5 text-[11px] leading-tight text-foreground"
                       >
                         {o.event.start_time && day === o.start ? `${formatTime(o.event.start_time)} ` : ""}
                         {o.event.title}
@@ -197,7 +206,7 @@ export default function KalenderPage() {
                 Nichts geplant – Termin hinzufügen
               </button>
             ) : (
-              <EntryList entries={dayEntries} today={today} onOpen={(e) => setDialog({ event: e, date: selectedDay })} />
+              <EntryList entries={dayEntries} today={today} meta={meta} onOpen={(e) => setDialog({ event: e, date: selectedDay })} />
             )}
           </section>
 
@@ -208,7 +217,7 @@ export default function KalenderPage() {
             ) : upcoming.length === 0 ? (
               <p className="text-sm text-muted">In den nächsten 60 Tagen steht nichts an.</p>
             ) : (
-              <EntryList entries={upcoming} today={today} showRelative onOpen={(e) => setDialog({ event: e, date: e.start_date })} />
+              <EntryList entries={upcoming} today={today} meta={meta} showRelative onOpen={(e) => setDialog({ event: e, date: e.start_date })} />
             )}
           </section>
         </aside>
@@ -221,6 +230,10 @@ export default function KalenderPage() {
           onClose={() => setDialog(null)}
           onSaved={upsertLocal}
           onDeleted={removeLocal}
+          categories={meta.categories}
+          people={meta.people}
+          myId={me?.id ?? null}
+          personColor={meta.personColor}
         />
       )}
     </>
@@ -230,22 +243,28 @@ export default function KalenderPage() {
 function EntryList({
   entries,
   today,
+  meta,
   showRelative,
   onOpen,
 }: {
   entries: Occurrence[];
   today: string;
+  meta: ReturnType<typeof useCalendarMeta>;
   showRelative?: boolean;
   onOpen: (e: CalendarEvent) => void;
 }) {
   return (
     <ul className="divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
       {entries.map((o) => {
-        const age = ageAt(o.event, o.start);
+        const category = meta.categoryOf(o.event);
+        const age = ageAt(o.event, o.start, category);
         return (
           <li key={`${o.event.id}-${o.start}`}>
             <button onClick={() => onOpen(o.event)} className="flex w-full gap-3 p-3 text-left hover:bg-foreground/5">
-              <span className={`mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full ${CATEGORIES[o.event.category].dot}`} />
+              <span
+                className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full"
+                style={{ backgroundColor: meta.colorOf(o.event) }}
+              />
               <span className="min-w-0 flex-1">
                 <span className="flex items-center gap-1.5 font-medium">
                   <span className="truncate">
@@ -256,6 +275,10 @@ function EntryList({
                   {o.event.is_countdown && <Timer size={13} className="shrink-0 text-muted" />}
                 </span>
                 <span className="block text-xs text-muted">{formatRange(o)}</span>
+                <span className="block text-xs text-muted">
+                  {meta.ownerLabel(o.event.owner_id)}
+                  {category ? ` · ${category.name}` : ""}
+                </span>
                 {o.event.location && (
                   <span className="mt-0.5 flex items-center gap-1 text-xs text-muted">
                     <MapPin size={12} />

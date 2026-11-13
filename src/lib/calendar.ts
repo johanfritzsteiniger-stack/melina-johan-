@@ -1,13 +1,13 @@
 // Kalender-Logik: Datums-Helfer und Wiederholungen.
 // Daten werden als "YYYY-MM-DD"-Strings gespeichert, um Zeitzonen-Probleme zu vermeiden.
 
-export type Category = "termin" | "urlaub" | "feier" | "geburtstag" | "sonstiges";
 export type Recurrence = "none" | "weekly" | "monthly" | "yearly";
 
 export type CalendarEvent = {
   id: string;
   title: string;
-  category: Category;
+  category_id: string | null;
+  owner_id: string | null; // null = beide
   start_date: string;
   end_date: string | null;
   start_time: string | null;
@@ -19,42 +19,20 @@ export type CalendarEvent = {
   created_by: string | null;
 };
 
+export type Category = {
+  id: string;
+  name: string;
+  color: string;
+  is_birthday: boolean;
+  is_countdown: boolean;
+  sort: number;
+};
+
 /** Ein konkretes Vorkommen eines (evtl. wiederkehrenden) Termins. */
 export type Occurrence = {
   event: CalendarEvent;
   start: string; // YYYY-MM-DD
   end: string; // YYYY-MM-DD (gleich start bei eintägigen Terminen)
-};
-
-export const CATEGORIES: Record<
-  Category,
-  { label: string; dot: string; chip: string }
-> = {
-  termin: {
-    label: "Termin",
-    dot: "bg-sky-500",
-    chip: "bg-sky-500/15 text-sky-700 dark:text-sky-300",
-  },
-  urlaub: {
-    label: "Urlaub",
-    dot: "bg-teal-500",
-    chip: "bg-teal-500/15 text-teal-700 dark:text-teal-300",
-  },
-  feier: {
-    label: "Feier",
-    dot: "bg-amber-500",
-    chip: "bg-amber-500/15 text-amber-700 dark:text-amber-300",
-  },
-  geburtstag: {
-    label: "Geburtstag",
-    dot: "bg-rose-500",
-    chip: "bg-rose-500/15 text-rose-700 dark:text-rose-300",
-  },
-  sonstiges: {
-    label: "Sonstiges",
-    dot: "bg-zinc-400",
-    chip: "bg-zinc-500/15 text-zinc-700 dark:text-zinc-300",
-  },
 };
 
 export const RECURRENCES: Record<Recurrence, string> = {
@@ -224,9 +202,13 @@ export function relativeLabel(o: Occurrence, today: string): string {
   return `in ${days} Tagen`;
 }
 
-/** Alter beim nächsten Geburtstag (wenn das Startdatum das Geburtsdatum ist). */
-export function ageAt(event: CalendarEvent, occurrenceStart: string): number | null {
-  if (event.category !== "geburtstag" || event.recurrence !== "yearly") return null;
+/** Alter beim Geburtstag (wenn das Startdatum das Geburtsdatum ist). */
+export function ageAt(
+  event: CalendarEvent,
+  occurrenceStart: string,
+  category: Category | undefined,
+): number | null {
+  if (!category?.is_birthday || event.recurrence !== "yearly") return null;
   const age = Number(occurrenceStart.slice(0, 4)) - Number(event.start_date.slice(0, 4));
   return age > 0 ? age : null;
 }

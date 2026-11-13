@@ -6,8 +6,8 @@ import { CalendarDays, ListChecks, Timer, Trophy } from "lucide-react";
 import { useProfiles } from "@/lib/use-profile";
 import { useEvents } from "@/lib/use-events";
 import { useToday } from "@/lib/use-today";
+import { useCalendarMeta } from "@/lib/use-calendar-meta";
 import {
-  CATEGORIES,
   addDays,
   ageAt,
   diffDays,
@@ -31,6 +31,7 @@ export default function DashboardPage() {
   const { me, loading } = useProfiles();
   const { events } = useEvents();
   const today = useToday();
+  const meta = useCalendarMeta();
 
   const countdowns = useMemo(() => {
     if (!today) return [];
@@ -60,7 +61,15 @@ export default function DashboardPage() {
       {countdowns.length > 0 && (
         <section className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {countdowns.map((o) => (
-            <CountdownCard key={o.event.id} o={o} today={today} />
+            <CountdownCard
+              key={o.event.id}
+              o={o}
+              today={today}
+              color={meta.colorOf(o.event)}
+              subtitle={[meta.ownerLabel(o.event.owner_id), meta.categoryOf(o.event)?.name]
+                .filter(Boolean)
+                .join(" · ")}
+            />
           ))}
         </section>
       )}
@@ -81,10 +90,13 @@ export default function DashboardPage() {
           ) : (
             <ul className="space-y-2">
               {upcoming.map((o) => {
-                const age = ageAt(o.event, o.start);
+                const age = ageAt(o.event, o.start, meta.categoryOf(o.event));
                 return (
                   <li key={`${o.event.id}-${o.start}`} className="flex items-center gap-2 text-sm">
-                    <span className={`h-2 w-2 shrink-0 rounded-full ${CATEGORIES[o.event.category].dot}`} />
+                    <span
+                      className="h-2 w-2 shrink-0 rounded-full"
+                      style={{ backgroundColor: meta.colorOf(o.event) }}
+                    />
                     <span className="min-w-0 flex-1 truncate">
                       {o.event.title}
                       {age ? ` (${age})` : ""}
@@ -134,7 +146,17 @@ function Card({
   );
 }
 
-function CountdownCard({ o, today }: { o: Occurrence; today: string }) {
+function CountdownCard({
+  o,
+  today,
+  color,
+  subtitle,
+}: {
+  o: Occurrence;
+  today: string;
+  color: string;
+  subtitle: string;
+}) {
   const days = diffDays(today, o.start);
   const running = o.start <= today && o.end >= today;
   const total = o.event.end_date ? diffDays(o.start, o.end) + 1 : 1;
@@ -145,7 +167,10 @@ function CountdownCard({ o, today }: { o: Occurrence; today: string }) {
       href="/kalender"
       className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 transition-colors hover:border-accent/50"
     >
-      <div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-xl bg-accent/10 text-accent">
+      <div
+        className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-xl"
+        style={{ backgroundColor: `${color}1f`, color }}
+      >
         {running ? (
           <span className="text-xs font-semibold">jetzt</span>
         ) : (
@@ -160,7 +185,7 @@ function CountdownCard({ o, today }: { o: Occurrence; today: string }) {
         <p className="text-sm text-muted">
           {running && total > 1 ? `Tag ${dayOf} von ${total}` : formatRange(o)}
         </p>
-        <p className="text-xs text-muted">{CATEGORIES[o.event.category].label}</p>
+        <p className="text-xs text-muted">{subtitle}</p>
       </div>
     </Link>
   );

@@ -7,6 +7,7 @@ export type Profile = {
   id: string;
   display_name: string;
   email: string | null;
+  color: string | null;
 };
 
 /** Lädt das Profil der eingeloggten Person und alle Profile (also euch beide). */
@@ -23,7 +24,7 @@ export function useProfiles() {
       const { data: auth } = await supabase.auth.getUser();
       const { data } = await supabase
         .from("profiles")
-        .select("id, display_name, email")
+        .select("id, display_name, email, color")
         .order("created_at");
       if (cancelled) return;
       const profiles = (data ?? []) as Profile[];

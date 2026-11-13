@@ -4,13 +4,8 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { getSupabase } from "@/lib/supabase/client";
 import { EVENT_COLUMNS } from "@/lib/use-events";
-import {
-  CATEGORIES,
-  RECURRENCES,
-  type CalendarEvent,
-  type Category,
-  type Recurrence,
-} from "@/lib/calendar";
+import { RECURRENCES, type CalendarEvent, type Category, type Recurrence } from "@/lib/calendar";
+import type { Person } from "@/lib/use-calendar-meta";
 
 type Props = {
   /** Bestehender Termin zum Bearbeiten, oder null für einen neuen */
@@ -19,14 +14,31 @@ type Props = {
   onClose: () => void;
   onSaved: (e: CalendarEvent) => void;
   onDeleted: (id: string) => void;
+  categories: Category[];
+  people: Person[];
+  myId: string | null;
+  personColor: (ownerId: string | null) => string;
 };
 
 const input =
   "w-full rounded-lg border border-border bg-background px-3 py-2 outline-none focus:border-accent";
 
-export function EventDialog({ event, defaultDate, onClose, onSaved, onDeleted }: Props) {
+export function EventDialog({
+  event,
+  defaultDate,
+  onClose,
+  onSaved,
+  onDeleted,
+  categories,
+  people,
+  myId,
+  personColor,
+}: Props) {
   const [title, setTitle] = useState(event?.title ?? "");
-  const [category, setCategory] = useState<Category>(event?.category ?? "termin");
+  const [categoryId, setCategoryId] = useState<string | null>(
+    event ? event.category_id : (categories[0]?.id ?? null),
+  );
+  const [ownerId, setOwnerId] = useState<string | null>(event ? event.owner_id : myId);
   const [startDate, setStartDate] = useState(event?.start_date ?? defaultDate);
   const [endDate, setEndDate] = useState(event?.end_date ?? "");
   const [allDay, setAllDay] = useState(event ? !event.start_time : true);
@@ -39,20 +51,27 @@ export function EventDialog({ event, defaultDate, onClose, onSaved, onDeleted }:
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const isBirthday = categories.find((c) => c.id === categoryId)?.is_birthday ?? false;
+
   function changeCategory(c: Category) {
-    setCategory(c);
-    // Sinnvolle Vorgaben für neue Termine
+    setCategoryId(c.id);
+    // Vorgaben der Kategorie für neue Termine übernehmen
     if (!event) {
-      if (c === "geburtstag") {
+      if (c.is_birthday) {
         setRecurrence("yearly");
         setAllDay(true);
       }
-      if (c === "urlaub") {
+      if (c.is_countdown) {
         setIsCountdown(true);
         setAllDay(true);
       }
     }
   }
+
+  const owners: { id: string | null; label: string }[] = [
+    ...people.map((p) => ({ id: p.id, label: p.display_name })),
+    { id: null, label: "Beide" },
+  ];
 
   async function save(e: React.FormEvent) {
     e.preventDefault();
@@ -66,7 +85,8 @@ export function EventDialog({ event, defaultDate, onClose, onSaved, onDeleted }:
 
     const row = {
       title: title.trim(),
-      category,
+      category_id: categoryId,
+      owner_id: ownerId,
       start_date: startDate,
       end_date: endDate && endDate !== startDate ? endDate : null,
       start_time: allDay ? null : startTime || null,
@@ -132,28 +152,55 @@ export function EventDialog({ event, defaultDate, onClose, onSaved, onDeleted }:
           className={`${input} text-base font-medium`}
         />
 
-        <div className="flex flex-wrap gap-2">
-          {(Object.keys(CATEGORIES) as Category[]).map((c) => (
-            <button
-              key={c}
-              type="button"
-              onClick={() => changeCategory(c)}
-              className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm ${
-                category === c
-                  ? "border-accent bg-accent/10 text-foreground"
-                  : "border-border text-muted"
-              }`}
-            >
-              <span className={`h-2 w-2 rounded-full ${CATEGORIES[c].dot}`} />
-              {CATEGORIES[c].label}
-            </button>
-          ))}
+        <div className="space-y-1">
+          <span className="text-sm text-muted">Für wen?</span>
+          <div className="grid grid-cols-3 gap-2">
+            {owners.map((o) => {
+              const active = ownerId === o.id;
+              const color = personColor(o.id);
+              return (
+                <button
+                  key={o.id ?? "beide"}
+                  type="button"
+                  onClick={() => setOwnerId(o.id)}
+                  style={active ? { borderColor: color, backgroundColor: `${color}1f` } : undefined}
+                  className={`flex items-center justify-center gap-1.5 truncate rounded-lg border px-2 py-2 text-sm ${
+                    active ? "font-medium text-foreground" : "border-border text-muted"
+                  }`}
+                >
+                  <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: color }} />
+                  <span className="truncate">{o.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="space-y-1">
+          <span className="text-sm text-muted">Kategorie</span>
+          <div className="flex flex-wrap gap-2">
+            {categories.map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => changeCategory(c)}
+                className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm ${
+                  categoryId === c.id
+                    ? "border-accent bg-accent/10 text-foreground"
+                    : "border-border text-muted"
+                }`}
+              >
+                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: c.color }} />
+                {c.name}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <label className="space-y-1">
             <span className="text-sm text-muted">
-              {category === "geburtstag" ? "Geburtsdatum" : "Von"}
+              {isBirthday ? "Geburtsdatum" : "Von"}
             </span>
             <input
               type="date"

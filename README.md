@@ -37,7 +37,7 @@ npm run dev
 ## Fahrplan
 
 - [x] Schritt 2: Login, Dashboard, Layout für Handy und PC
-- [x] Schritt 3: Kalender und Countdowns
+- [x] Schritt 3: Kalender und Countdowns (inkl. Personenfarben und eigenen Kategorien)
 - [ ] Schritt 4: Battles (inkl. Spotify-Minuten)
 - [ ] Schritt 5: Listen, Ausgaben, Ideen, Watchlist, Wetten
 - [ ] Schritt 6: Push-Erinnerungen
