@@ -8,7 +8,7 @@ Unsere gemeinsame Web-App: Kalender mit Countdowns, Battles, Listen, Ausgaben, I
 
 ### 1. Supabase
 
-1. Im Supabase-Projekt den **SQL Editor** öffnen und `supabase/migrations/0001_profiles.sql` einfügen und ausführen.
+1. Im Supabase-Projekt den **SQL Editor** öffnen und alle Dateien aus `supabase/migrations/` der Reihe nach einfügen und ausführen (`0001_…`, `0002_…`, …). Bei neuen Schritten kommen neue Dateien dazu, die dann ebenfalls einmal ausgeführt werden.
 2. **Authentication → Sign In / Providers → Email:** „Allow new users to sign up“ **ausschalten**, damit sich niemand Fremdes registrieren kann.
 3. **Authentication → Users → Add user → Create new user:** einen Nutzer für Melina und einen für Johan anlegen (E-Mail, Passwort, „Auto Confirm User“ anhaken).
 4. Unter **Project Settings → API Keys** die Projekt-URL und den **Publishable Key** kopieren.
@@ -37,7 +37,7 @@ npm run dev
 ## Fahrplan
 
 - [x] Schritt 2: Login, Dashboard, Layout für Handy und PC
-- [ ] Schritt 3: Kalender und Countdowns
+- [x] Schritt 3: Kalender und Countdowns
 - [ ] Schritt 4: Battles (inkl. Spotify-Minuten)
 - [ ] Schritt 5: Listen, Ausgaben, Ideen, Watchlist, Wetten
 - [ ] Schritt 6: Push-Erinnerungen
