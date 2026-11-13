@@ -7,6 +7,9 @@ import { useProfiles } from "@/lib/use-profile";
 import { useEvents } from "@/lib/use-events";
 import { useToday } from "@/lib/use-today";
 import { useCalendarMeta } from "@/lib/use-calendar-meta";
+import { useBattles } from "@/lib/use-battles";
+import { computeResults } from "@/lib/battles";
+import { leadText } from "@/components/battle-ui";
 import {
   addDays,
   ageAt,
@@ -41,6 +44,22 @@ export default function DashboardPage() {
       .filter((o): o is Occurrence => o !== null)
       .sort((a, b) => a.start.localeCompare(b.start));
   }, [events, today]);
+
+  const { battles, entries } = useBattles();
+  const battleStatus = useMemo(() => {
+    const ids = meta.people.map((p) => p.id);
+    return battles
+      .filter((b) => !b.archived)
+      .map((battle) => {
+        const results = computeResults(
+          battle,
+          entries.filter((e) => e.battle_id === battle.id),
+          ids,
+          today,
+        );
+        return { battle, current: results.find((r) => !r.finished) ?? results[0] };
+      });
+  }, [battles, entries, meta.people, today]);
 
   const upcoming = useMemo(
     () => (today ? expand(events, today, addDays(today, 30)).slice(0, 5) : []),
@@ -109,8 +128,20 @@ export default function DashboardPage() {
           )}
         </Card>
 
-        <Card href="/battles" title="Battles diese Woche" icon={Trophy}>
-          <p className="text-sm text-muted">Kommt in Schritt 4.</p>
+        <Card href="/battles" title="Battles" icon={Trophy}>
+          {battleStatus.length === 0 ? (
+            <p className="text-sm text-muted">Noch keine Battles.</p>
+          ) : (
+            <ul className="space-y-2">
+              {battleStatus.map(({ battle, current }) => (
+                <li key={battle.id} className="flex items-center gap-2 text-sm">
+                  <span>{battle.emoji || "🏆"}</span>
+                  <span className="min-w-0 flex-1 truncate">{battle.name}</span>
+                  <span className="shrink-0 text-xs text-muted">{leadText(current, meta.people)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </Card>
 
         <Card href="/listen" title="Offene Listen" icon={ListChecks}>
