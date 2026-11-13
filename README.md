@@ -40,4 +40,4 @@ npm run dev
 - [x] Schritt 3: Kalender und Countdowns (inkl. Personenfarben und eigenen Kategorien)
 - [x] Schritt 4: Battles (inkl. Spotify-Minuten)
 - [x] Schritt 5: Listen, Ausgaben, Ideen, Watchlist, Wetten (mit Archiv)
-- [ ] Schritt 6: Push-Erinnerungen
+- [x] Schritt 6: Push-Benachrichtigungen (Einrichtung: Einstellungen → Benachrichtigungen → Einrichtung)

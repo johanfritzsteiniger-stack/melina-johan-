@@ -18,6 +18,7 @@ export type CalendarEvent = {
   notes: string | null;
   is_countdown: boolean;
   created_by: string | null;
+  reminder_minutes?: number | null;
 };
 
 export type Category = {

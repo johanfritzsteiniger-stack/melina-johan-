@@ -10,6 +10,7 @@ import { useToday } from "@/lib/use-today";
 import { useCalendarMeta } from "@/lib/use-calendar-meta";
 import { useProfiles } from "@/lib/use-profile";
 import { formatDate } from "@/lib/calendar";
+import { notifyPartner } from "@/lib/push-client";
 
 type Kind = "film" | "serie";
 
@@ -196,6 +197,7 @@ function ItemDialog({ item, onClose }: { item: WatchItem | null; onClose: () => 
       ? await getSupabase().from("watch_items").update(row).eq("id", item.id)
       : await getSupabase().from("watch_items").insert(row);
     if (error) return setError(error.message);
+    if (!item) notifyPartner("Neu auf der Watchlist", `${KINDS[kind]} ${row.title}`, "/watchlist");
     onClose();
   }
 

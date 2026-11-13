@@ -51,6 +51,9 @@ export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const isLogin = path.startsWith("/login");
 
+  // API-Routen prüfen die Anmeldung selbst (der Zeitplaner hat keine Session)
+  if (path.startsWith("/api/")) return response;
+
   if (!loggedIn && !isLogin) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";

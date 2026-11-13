@@ -12,6 +12,7 @@ import { useCalendarMeta } from "@/lib/use-calendar-meta";
 import { useProfiles } from "@/lib/use-profile";
 import { useToday } from "@/lib/use-today";
 import { formatDate } from "@/lib/calendar";
+import { notifyPartner } from "@/lib/push-client";
 import {
   AGGREGATES,
   computeResults,
@@ -320,6 +321,12 @@ function EntryForm({
     setValue("");
     setNote("");
     setStatus("Eingetragen.");
+    const whoName = people.find((p) => p.id === who)?.display_name;
+    notifyPartner(
+      `${battle.emoji ?? "🏆"} ${battle.name}`,
+      `${who === me?.id ? "" : `für ${whoName}: `}${formatValue(num, battle.unit)} eingetragen`,
+      `/battles/${battle.id}`,
+    );
   }
 
   return (

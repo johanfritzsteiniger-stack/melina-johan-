@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, Trash2 } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
+import { PushSettings } from "@/components/push-settings";
 import { ColorPicker } from "@/components/color-picker";
 import { getSupabase } from "@/lib/supabase/client";
 import { useProfiles, type Profile } from "@/lib/use-profile";
@@ -31,6 +32,8 @@ export default function EinstellungenPage() {
       <PageHeader title="Einstellungen" />
       <div className="space-y-6">
         {me && <ProfileSection key={me.id} me={me} onSaved={setMe} />}
+
+        {me && <PushSettings userId={me.id} />}
 
         <TogetherSection key={meta.togetherSince ?? "leer"} since={meta.togetherSince} reload={meta.reload} />
 

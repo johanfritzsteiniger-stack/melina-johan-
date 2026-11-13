@@ -5,7 +5,7 @@ import { getSupabase } from "@/lib/supabase/client";
 import type { CalendarEvent } from "@/lib/calendar";
 
 const COLUMNS =
-  "id, title, category_id, owner_id, shared, start_date, end_date, start_time, end_time, recurrence, location, notes, is_countdown, created_by";
+  "id, title, category_id, owner_id, shared, reminder_minutes, start_date, end_date, start_time, end_time, recurrence, location, notes, is_countdown, created_by";
 
 /** Lädt alle Termine und hält sie live aktuell (Änderungen des anderen erscheinen sofort). */
 export function useEvents() {

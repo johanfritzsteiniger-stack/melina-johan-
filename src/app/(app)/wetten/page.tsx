@@ -9,6 +9,7 @@ import { useTable } from "@/lib/use-table";
 import { useToday } from "@/lib/use-today";
 import { useCalendarMeta, type Person } from "@/lib/use-calendar-meta";
 import { formatDate } from "@/lib/calendar";
+import { notifyPartner } from "@/lib/push-client";
 
 type Bet = {
   id: string;
@@ -222,6 +223,7 @@ function BetDialog({ bet, people, onClose }: { bet: Bet | null; people: Person[]
       ? await getSupabase().from("bets").update(row).eq("id", bet.id)
       : await getSupabase().from("bets").insert(row);
     if (error) return setError(error.message);
+    if (!bet) notifyPartner("Neue Wette", row.stake ? `${row.title} · Einsatz: ${row.stake}` : row.title, "/wetten");
     onClose();
   }
 
@@ -297,6 +299,10 @@ function ResolveDialog({
         resolved_at: bet.resolved_at ?? new Date().toISOString(),
       })
       .eq("id", bet.id);
+    if (!bet.resolved_at) {
+      const result = choice === "draw" ? "Unentschieden" : `${people.find((p) => p.id === choice)?.display_name} gewinnt`;
+      notifyPartner("Wette aufgelöst", `${bet.title}: ${result}`, "/wetten");
+    }
     onClose();
   }
 

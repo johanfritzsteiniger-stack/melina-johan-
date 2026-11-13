@@ -1,12 +1,17 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { registerServiceWorker } from "@/lib/push-client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { APP_NAME } from "@/lib/config";
 import { MOBILE_NAV, NAV_ITEMS, isActive } from "@/lib/nav";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    registerServiceWorker();
+  }, []);
+
   return (
     <div className="min-h-dvh md:flex">
       {/* Sidebar am PC */}

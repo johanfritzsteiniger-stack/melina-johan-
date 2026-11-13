@@ -6,6 +6,9 @@ import { getSupabase } from "@/lib/supabase/client";
 import { EVENT_COLUMNS } from "@/lib/use-events";
 import { RECURRENCES, type CalendarEvent, type Category, type Recurrence } from "@/lib/calendar";
 import type { Person } from "@/lib/use-calendar-meta";
+import { REMINDER_OPTIONS } from "@/lib/reminders";
+import { notifyPartner } from "@/lib/push-client";
+import { formatDate } from "@/lib/calendar";
 
 type Props = {
   /** Bestehender Termin zum Bearbeiten, oder null für einen neuen */
@@ -49,6 +52,7 @@ export function EventDialog({
   const [location, setLocation] = useState(event?.location ?? "");
   const [notes, setNotes] = useState(event?.notes ?? "");
   const [isCountdown, setIsCountdown] = useState(event?.is_countdown ?? false);
+  const [reminder, setReminder] = useState<number | null>(event?.reminder_minutes ?? null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -97,6 +101,7 @@ export function EventDialog({
       location: location.trim() || null,
       notes: notes.trim() || null,
       is_countdown: isCountdown,
+      reminder_minutes: reminder,
     };
 
     const supabase = getSupabase();
@@ -111,6 +116,9 @@ export function EventDialog({
       return;
     }
     onSaved(data as CalendarEvent);
+    if (!event) {
+      notifyPartner("Neuer Termin", `${row.title} · ${formatDate(row.start_date, { weekday: "short", day: "numeric", month: "short" })}`, "/kalender");
+    }
     onClose();
   }
 
@@ -274,6 +282,24 @@ export function EventDialog({
               </option>
             ))}
           </select>
+        </label>
+
+        <label className="block space-y-1">
+          <span className="text-sm text-muted">Erinnerung per Push</span>
+          <select
+            value={reminder === null ? "" : String(reminder)}
+            onChange={(e) => setReminder(e.target.value === "" ? null : Number(e.target.value))}
+            className={input}
+          >
+            {REMINDER_OPTIONS.map((o) => (
+              <option key={o.label} value={o.value === null ? "" : String(o.value)}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+          {allDay && reminder !== null && (
+            <span className="block text-xs text-muted">Bei ganztägigen Terminen gilt 9:00 Uhr als Beginn.</span>
+          )}
         </label>
 
         <input

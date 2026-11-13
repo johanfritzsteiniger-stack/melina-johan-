@@ -10,6 +10,7 @@ import { useToday } from "@/lib/use-today";
 import { useCalendarMeta, type Person } from "@/lib/use-calendar-meta";
 import { useProfiles } from "@/lib/use-profile";
 import { formatDate } from "@/lib/calendar";
+import { notifyPartner } from "@/lib/push-client";
 import {
   EXPENSE_CATEGORIES,
   EXPENSE_COLUMNS,
@@ -256,6 +257,7 @@ function ExpenseDialog({ expense, people, onClose }: { expense: Expense | null; 
       ? await getSupabase().from("expenses").update(row).eq("id", expense.id)
       : await getSupabase().from("expenses").insert(row);
     if (error) return setError(error.message);
+    if (!expense) notifyPartner("Neue Ausgabe", `${row.title} · ${euro(row.amount)}`, "/ausgaben");
     onClose();
   }
 

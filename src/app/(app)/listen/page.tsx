@@ -20,6 +20,7 @@ import { useTable } from "@/lib/use-table";
 import { useToday } from "@/lib/use-today";
 import { useCalendarMeta } from "@/lib/use-calendar-meta";
 import { formatDate } from "@/lib/calendar";
+import { notifyPartner } from "@/lib/push-client";
 import {
   ITEM_COLUMNS,
   LIST_COLUMNS,
@@ -454,6 +455,7 @@ function ListDialog({
       setError("Speichern hat nicht geklappt: " + error.message);
       return;
     }
+    if (!list) notifyPartner("Neue Liste", `${row.emoji ?? "📝"} ${row.name}`, "/listen");
     onSaved(data.id as string);
     onClose();
   }

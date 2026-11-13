@@ -8,6 +8,7 @@ import { getSupabase } from "@/lib/supabase/client";
 import { useTable } from "@/lib/use-table";
 import { useToday } from "@/lib/use-today";
 import { formatDate } from "@/lib/calendar";
+import { notifyPartner } from "@/lib/push-client";
 
 type Kind = "restaurant" | "ausflug" | "reise" | "aktivitaet" | "sonstiges";
 
@@ -199,6 +200,7 @@ function IdeaDialog({ idea, onClose }: { idea: Idea | null; onClose: () => void 
       : getSupabase().from("ideas").insert(row);
     const { error } = await q;
     if (error) return setError(error.message);
+    if (!idea) notifyPartner("Neue Idee", `${KINDS[kind].emoji} ${row.title}`, "/ideen");
     onClose();
   }
 
