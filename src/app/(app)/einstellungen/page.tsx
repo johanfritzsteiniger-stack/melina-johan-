@@ -55,7 +55,9 @@ export default function EinstellungenPage() {
                 </button>
               ))}
             </div>
-            <p className="text-xs text-muted">Gilt für dieses Gerät.</p>
+            <p className="text-xs text-muted">
+              Gilt für dieses Gerät. Termine ohne Person haben immer die Farbe ihrer Kategorie.
+            </p>
           </div>
 
           <div className="space-y-2">

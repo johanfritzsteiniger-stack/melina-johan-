@@ -7,7 +7,6 @@ import { PageHeader } from "@/components/page-header";
 import { useEvents } from "@/lib/use-events";
 import { useToday } from "@/lib/use-today";
 import { useCalendarMeta } from "@/lib/use-calendar-meta";
-import { useProfiles } from "@/lib/use-profile";
 import { chipStyle } from "@/lib/colors";
 import {
   WEEKDAYS,
@@ -30,7 +29,6 @@ export default function KalenderPage() {
   const today = useToday();
   const { events, loading, error, upsertLocal, removeLocal } = useEvents();
   const meta = useCalendarMeta();
-  const { me } = useProfiles();
 
   const [month, setMonth] = useState<{ y: number; m: number } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -232,7 +230,6 @@ export default function KalenderPage() {
           onDeleted={removeLocal}
           categories={meta.categories}
           people={meta.people}
-          myId={me?.id ?? null}
           personColor={meta.personColor}
         />
       )}
@@ -276,8 +273,7 @@ function EntryList({
                 </span>
                 <span className="block text-xs text-muted">{formatRange(o)}</span>
                 <span className="block text-xs text-muted">
-                  {meta.ownerLabel(o.event.owner_id)}
-                  {category ? ` · ${category.name}` : ""}
+                  {[meta.ownerLabel(o.event), category?.name].filter(Boolean).join(" · ")}
                 </span>
                 {o.event.location && (
                   <span className="mt-0.5 flex items-center gap-1 text-xs text-muted">

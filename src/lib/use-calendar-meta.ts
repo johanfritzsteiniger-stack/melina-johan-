@@ -97,13 +97,21 @@ export function useCalendarMeta() {
         ? sharedColor
         : (personById.get(ownerId)?.color ?? FALLBACK_PERSON);
 
-    const ownerLabel = (ownerId: string | null) =>
-      ownerId === null ? "Beide" : (personById.get(ownerId)?.display_name ?? "?");
+    /** "Johan", "Melina", "Beide" oder "" (keine Person). */
+    const ownerLabel = (e: CalendarEvent) =>
+      e.owner_id
+        ? (personById.get(e.owner_id)?.display_name ?? "?")
+        : e.shared
+          ? "Beide"
+          : "";
 
+    const hasPerson = (e: CalendarEvent) => Boolean(e.owner_id) || e.shared;
+
+    // Ohne Person (oder im Modus "Kategorie") gilt immer die Kategoriefarbe
     const colorOf = (e: CalendarEvent) =>
-      mode === "category"
-        ? (categoryOf(e)?.color ?? NO_CATEGORY)
-        : personColor(e.owner_id);
+      mode === "person" && hasPerson(e)
+        ? personColor(e.owner_id)
+        : (categoryOf(e)?.color ?? NO_CATEGORY);
 
     return { categoryOf, personColor, ownerLabel, colorOf };
   }, [categories, people, sharedColor, mode]);

@@ -66,7 +66,7 @@ export default function DashboardPage() {
               o={o}
               today={today}
               color={meta.colorOf(o.event)}
-              subtitle={[meta.ownerLabel(o.event.owner_id), meta.categoryOf(o.event)?.name]
+              subtitle={[meta.ownerLabel(o.event), meta.categoryOf(o.event)?.name]
                 .filter(Boolean)
                 .join(" · ")}
             />

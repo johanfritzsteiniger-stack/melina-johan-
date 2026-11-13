@@ -7,7 +7,8 @@ export type CalendarEvent = {
   id: string;
   title: string;
   category_id: string | null;
-  owner_id: string | null; // null = beide
+  owner_id: string | null; // gesetzt = Termin einer Person
+  shared: boolean; // true = für beide; beides leer = keine Person
   start_date: string;
   end_date: string | null;
   start_time: string | null;

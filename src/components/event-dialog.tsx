@@ -16,7 +16,6 @@ type Props = {
   onDeleted: (id: string) => void;
   categories: Category[];
   people: Person[];
-  myId: string | null;
   personColor: (ownerId: string | null) => string;
 };
 
@@ -31,14 +30,16 @@ export function EventDialog({
   onDeleted,
   categories,
   people,
-  myId,
   personColor,
 }: Props) {
   const [title, setTitle] = useState(event?.title ?? "");
   const [categoryId, setCategoryId] = useState<string | null>(
     event ? event.category_id : (categories[0]?.id ?? null),
   );
-  const [ownerId, setOwnerId] = useState<string | null>(event ? event.owner_id : myId);
+  // "" = keine Person, "both" = beide, sonst Profil-ID
+  const [assignee, setAssignee] = useState<string>(
+    event ? (event.owner_id ?? (event.shared ? "both" : "")) : "",
+  );
   const [startDate, setStartDate] = useState(event?.start_date ?? defaultDate);
   const [endDate, setEndDate] = useState(event?.end_date ?? "");
   const [allDay, setAllDay] = useState(event ? !event.start_time : true);
@@ -68,9 +69,9 @@ export function EventDialog({
     }
   }
 
-  const owners: { id: string | null; label: string }[] = [
-    ...people.map((p) => ({ id: p.id, label: p.display_name })),
-    { id: null, label: "Beide" },
+  const owners: { value: string; label: string; color: string }[] = [
+    ...people.map((p) => ({ value: p.id, label: p.display_name, color: personColor(p.id) })),
+    { value: "both", label: "Beide", color: personColor(null) },
   ];
 
   async function save(e: React.FormEvent) {
@@ -86,7 +87,8 @@ export function EventDialog({
     const row = {
       title: title.trim(),
       category_id: categoryId,
-      owner_id: ownerId,
+      owner_id: assignee && assignee !== "both" ? assignee : null,
+      shared: assignee === "both",
       start_date: startDate,
       end_date: endDate && endDate !== startDate ? endDate : null,
       start_time: allDay ? null : startTime || null,
@@ -153,16 +155,17 @@ export function EventDialog({
         />
 
         <div className="space-y-1">
-          <span className="text-sm text-muted">Für wen?</span>
+          <span className="text-sm text-muted">Für wen? (optional)</span>
           <div className="grid grid-cols-3 gap-2">
             {owners.map((o) => {
-              const active = ownerId === o.id;
-              const color = personColor(o.id);
+              const active = assignee === o.value;
+              const color = o.color;
               return (
                 <button
-                  key={o.id ?? "beide"}
+                  key={o.value}
                   type="button"
-                  onClick={() => setOwnerId(o.id)}
+                  // Nochmal tippen hebt die Auswahl wieder auf
+                  onClick={() => setAssignee(active ? "" : o.value)}
                   style={active ? { borderColor: color, backgroundColor: `${color}1f` } : undefined}
                   className={`flex items-center justify-center gap-1.5 truncate rounded-lg border px-2 py-2 text-sm ${
                     active ? "font-medium text-foreground" : "border-border text-muted"
@@ -174,6 +177,9 @@ export function EventDialog({
               );
             })}
           </div>
+          {!assignee && (
+            <p className="text-xs text-muted">Ohne Auswahl bekommt der Termin die Farbe der Kategorie.</p>
+          )}
         </div>
 
         <div className="space-y-1">
