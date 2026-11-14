@@ -1,0 +1,199 @@
+Zeus|Oberster Gott der Griechen
+Hera|Gattin des Zeus
+Athene|Göttin der Weisheit
+Apollon|Gott des Lichts und der Musik
+Artemis|Göttin der Jagd
+Ares|Griechischer Kriegsgott
+Hermes|Götterbote mit Flügelschuhen
+Poseidon|Herr der Meere
+Hades|Herr der Unterwelt
+Dionysos|Gott des Weines
+Aphrodite|Göttin der Liebe
+Eros|Griechischer Liebesgott
+Nike|Siegesgöttin, auch Sportmarke
+Gaia|Mutter Erde
+Kronos|Titan, Vater des Zeus
+Prometheus|Brachte den Menschen das Feuer
+Herakles|Held der zwölf Arbeiten
+Odysseus|Listiger Held der Irrfahrt
+Achilles|Held mit verwundbarer Ferse
+Hektor|Trojanischer Held
+Troja|Stadt des hölzernen Pferdes
+Helena|Schönste Frau der Antike
+Medusa|Gorgone mit Schlangenhaar
+Pegasus|Geflügeltes Pferd
+Minotaurus|Stiermensch im Labyrinth
+Ikarus|Flog zu nah an die Sonne
+Orpheus|Sänger, der in die Unterwelt stieg
+Narziss|Verliebte sich in sein Spiegelbild
+Sisyphos|Rollt ewig seinen Stein
+Tantalos|Ewig hungernd vor Früchten
+Kyklop|Einäugiger Riese
+Sirene|Verführerische Sängerin, auch Alarm
+Jupiter|Römischer Göttervater
+Juno|Römische Göttermutter
+Mars|Römischer Kriegsgott
+Minerva|Römische Göttin der Weisheit
+Merkur|Römischer Götterbote
+Amor|Römischer Liebesgott
+Janus|Gott mit zwei Gesichtern
+Odin|Göttervater der Germanen
+Thor|Germanischer Donnergott
+Loki|Listiger Gott der Nordmänner
+Freya|Germanische Liebesgöttin
+Walhall|Halle der gefallenen Krieger
+Walkuere|Schlachtenjungfrau
+Asgard|Heimat der nordischen Götter
+Midgard|Welt der Menschen in der Edda
+Edda|Sammlung nordischer Sagen
+Siegfried|Drachentöter der Nibelungen
+Kriemhild|Rächerin im Nibelungenlied
+Hagen|Mörder Siegfrieds
+Brunhild|Königin von Island im Nibelungenlied
+Rheingold|Schatz der Nibelungen
+Gral|Kelch der Artussage
+Excalibur|Schwert König Artus'
+Merlin|Zauberer am Hof von Camelot
+Camelot|Burg König Artus'
+Rapunzel|Märchenfigur mit langem Haar
+Rumpelstilzchen|Märchenzwerg mit geheimem Namen
+Dornroeschen|Schlief hundert Jahre
+Schneewittchen|Lebte bei sieben Zwergen
+Aschenputtel|Verlor einen Schuh
+Froschkoenig|Märchenfigur mit goldener Kugel
+Hexe|Lebkuchenhausbesitzerin
+Drache|Feuerspeiendes Fabelwesen
+Einhorn|Pferd mit Horn
+Phoenix|Vogel, der aus der Asche steigt
+Greif|Mischwesen aus Adler und Löwe
+Zwerg|Kleiner Bergmann im Märchen
+Kobold|Hausgeist
+Troll|Nordischer Unhold
+Pharao|Herrscher Ägyptens
+Kleopatra|Letzte Königin Ägyptens
+Tutanchamun|Pharao mit goldener Maske
+Sphinx|Löwe mit Menschenkopf in Gizeh
+Mumie|Einbalsamierter Leichnam
+Hieroglyphen|Ägyptische Bilderschrift
+Papyrus|Schreibmaterial der Ägypter
+Caesar|Kam, sah und siegte
+Augustus|Erster römischer Kaiser
+Nero|Kaiser, dem Roms Brand angelastet wird
+Hannibal|Überquerte mit Elefanten die Alpen
+Spartakus|Anführer des Sklavenaufstands
+Legion|Römische Heereseinheit
+Kolosseum|Amphitheater in Rom
+Forum|Marktplatz im alten Rom
+Senat|Römischer Ältestenrat
+Limes|Römischer Grenzwall
+Arminius|Sieger der Varusschlacht
+Varus|Verlor drei Legionen im Teutoburger Wald
+Germanen|Volksstämme nördlich des Limes
+Kelten|Volk der Druiden
+Druide|Keltischer Priester wie Miraculix
+Wikinger|Nordmänner auf Drachenbooten
+Karl|Der Große, Kaiser 800
+Barbarossa|Rotbart im Kyffhäuser
+Ritter|Mittelalterlicher Reiterkrieger
+Burg|Mittelalterliche Festung
+Turnier|Ritterlicher Wettkampf
+Knappe|Lehrling des Ritters
+Minne|Höfische Liebe
+Kreuzzug|Kriegszug ins Heilige Land
+Pest|Schwarzer Tod
+Hanse|Kaufmannsbund des Mittelalters
+Zunft|Handwerkervereinigung
+Kloster|Abtei
+Moench|Klosterbruder
+Nonne|Klosterschwester
+Abt|Klostervorsteher
+Luther|Reformator mit 95 Thesen
+Wittenberg|Lutherstadt
+Wartburg|Burg der Bibelübersetzung
+Reformation|Kirchenspaltung ab 1517
+Ablass|Freikauf von Sündenstrafen
+Kolumbus|Entdecker Amerikas 1492
+Magellan|Erste Weltumsegelung
+Vasco|Da Gama, Seeweg nach Indien (Vorname)
+Cortes|Eroberer Mexikos
+Azteken|Volk Montezumas
+Inka|Volk von Machu Picchu
+Maya|Volk mit berühmtem Kalender
+Napoleon|Kaiser der Franzosen
+Waterloo|Napoleons letzte Schlacht
+Bastille|Pariser Gefängnis, 1789 gestürmt
+Revolution|Umsturz
+Bismarck|Eiserner Kanzler
+Kaiser|Monarch
+Zar|Russischer Herrscher
+Sultan|Osmanischer Herrscher
+Kalif|Nachfolger Mohammeds
+Maharadscha|Indischer Fürst
+Dynastie|Herrscherhaus
+Habsburger|Herrscherhaus in Wien
+Hohenzollern|Preußisches Herrscherhaus
+Wettiner|Sächsisches Herrscherhaus
+August|Der Starke, Kurfürst von Sachsen
+Zwinger|Barockbau in Dresden
+Semperoper|Opernhaus in Dresden
+Frauenkirche|Wiederaufgebaute Kirche in Dresden
+Preussen|Staat Friedrichs des Großen
+Weimarer|... Republik
+Mauerfall|Ereignis vom 9. November 1989
+Wende|Umbruch 1989
+Trabant|Rennpappe aus Zwickau
+Wartburg|Automarke aus Eisenach
+Montagsdemo|Leipziger Protestform 1989
+Einheit|Tag der Deutschen ... am 3. Oktober
+Grundgesetz|Deutsche Verfassung
+Bundestag|Parlament im Reichstagsgebäude
+Kanzler|Regierungschef
+Minister|Ressortchef
+Diplomat|Gesandter
+Botschaft|Vertretung im Ausland oder Nachricht
+Vertrag|Vereinbarung
+Urkunde|Amtliches Dokument
+Archiv|Sammlung alter Dokumente
+Chronik|Zeitliche Aufzeichnung
+Epoche|Zeitalter
+Antike|Altertum
+Mittelalter|Zeit der Ritter
+Renaissance|Wiedergeburt der Antike
+Aufklaerung|Zeitalter der Vernunft
+Romantik|Epoche der blauen Blume
+Biedermeier|Epoche der Gemütlichkeit
+Steinzeit|Älteste Epoche der Menschheit
+Bronzezeit|Epoche nach der Steinzeit
+Eiszeit|Kaltzeit
+Neandertaler|Urmensch aus dem Düsseltal
+Hoehle|Wohnung der Steinzeitmenschen
+Faustkeil|Werkzeug der Steinzeit
+Pyramiden|Grabmäler von Gizeh
+Stonehenge|Steinkreis in England
+Akropolis|Burgberg Athens
+Pantheon|Tempel aller Götter in Rom
+Pompeji|Unter Vesuv-Asche begrabene Stadt
+Atlantis|Versunkenes Inselreich
+Bibel|Heilige Schrift
+Koran|Heiliges Buch des Islam
+Tora|Heilige Schrift des Judentums
+Psalm|Lied im Alten Testament
+Genesis|Erstes Buch Mose
+Arche|Noahs Schiff
+Eden|Paradiesgarten
+Moses|Brachte die zehn Gebote
+Salomo|Weiser König Israels
+David|Besiegte Goliath
+Goliath|Riese der Philister
+Engel|Himmlischer Bote
+Prophet|Verkünder
+Apostel|Jünger Jesu
+Petrus|Fels und Himmelspförtner
+Judas|Verräter
+Kathedrale|Bischofskirche
+Kapelle|Kleine Kirche
+Altar|Opfertisch
+Glocke|Ruft zum Gottesdienst
+Orden|Auszeichnung oder Gemeinschaft
+Pilger|Wallfahrer
+Jakobsweg|Pilgerweg nach Santiago

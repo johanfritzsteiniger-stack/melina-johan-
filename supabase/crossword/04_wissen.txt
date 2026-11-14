@@ -1,0 +1,237 @@
+Atom|Kleinster Baustein eines Elements
+Molekuel|Verbindung mehrerer Atome
+Proton|Positiv geladenes Kernteilchen
+Neutron|Ungeladenes Kernteilchen
+Elektron|Negativ geladenes Teilchen der Hülle
+Quark|Elementarteilchen, auch Milchprodukt
+Isotop|Atom mit anderer Neutronenzahl
+Ion|Geladenes Atom
+Enzym|Biokatalysator
+Protein|Eiweiß
+Hormon|Botenstoff wie Insulin
+Insulin|Hormon gegen hohen Blutzucker
+Vitamin|Lebenswichtiger Stoff, z. B. C
+Zelle|Kleinste Einheit des Lebens
+Gen|Erbanlage
+Chromosom|Träger der Erbinformation
+Mutation|Veränderung des Erbguts
+Evolution|Darwins Theorie der Entwicklung
+Darwin|Forscher der Beagle-Reise
+Mendel|Mönch der Erbsen-Vererbung
+Einstein|Vater der Relativitätstheorie
+Newton|Physiker mit dem Apfel
+Galilei|Und sie bewegt sich doch
+Kepler|Astronom der Planetengesetze
+Kopernikus|Begründer des heliozentrischen Weltbilds
+Planck|Begründer der Quantentheorie
+Roentgen|Entdecker der X-Strahlen
+Curie|Zweifache Nobelpreisträgerin, Radium
+Humboldt|Alexander von, Naturforscher in Südamerika
+Gauss|Mathematikerfürst aus Braunschweig
+Euler|Mathematiker der Zahl e
+Leibniz|Universalgelehrter, Mitentdecker der Infinitesimalrechnung
+Pythagoras|Satz über das rechtwinklige Dreieck
+Euklid|Vater der Geometrie
+Archimedes|Heureka-Rufer
+Zuse|Erbauer des ersten Computers Z3
+Gutenberg|Erfinder des Buchdrucks mit beweglichen Lettern
+Diesel|Erfinder des Selbstzünder-Motors
+Benz|Erfinder des Automobils 1886
+Edison|Erfinder der Glühbirne (populär)
+Tesla|Erfinder des Wechselstrommotors
+Volt|Einheit der elektrischen Spannung
+Ampere|Einheit der Stromstärke
+Ohm|Einheit des Widerstands
+Watt|Einheit der Leistung
+Joule|Einheit der Energie
+Kelvin|Absolute Temperatureinheit
+Newtonmeter|Einheit des Drehmoments
+Hertz|Einheit der Frequenz
+Dezibel|Maß für Lautstärke
+Gramm|Tausendstel eines Kilos
+Lichtjahr|Entfernung, die Licht in einem Jahr zurücklegt
+Parsec|Astronomische Entfernungseinheit
+Sauerstoff|Element O
+Wasserstoff|Element H
+Stickstoff|Element N, Hauptbestandteil der Luft
+Helium|Element in Ballons
+Neon|Edelgas der Leuchtreklame
+Argon|Häufigstes Edelgas der Luft
+Kohlenstoff|Element C
+Silizium|Element der Computerchips
+Eisen|Element Fe
+Kupfer|Element Cu
+Zinn|Element Sn, Lötmetall
+Zink|Element Zn
+Blei|Element Pb
+Silber|Element Ag
+Gold|Element Au
+Platin|Edelmetall Pt
+Quecksilber|Flüssiges Metall
+Uran|Element für Kernkraft
+Radon|Radioaktives Edelgas
+Chlor|Element in Schwimmbädern
+Jod|Element gegen Kropf
+Kalium|Element K
+Natrium|Element Na
+Calcium|Element für Knochen
+Magnesium|Element gegen Krämpfe
+Ozon|Dreiatomiger Sauerstoff
+Legierung|Metallmischung
+Bronze|Kupfer plus Zinn
+Messing|Kupfer plus Zink
+Stahl|Eisen mit wenig Kohlenstoff
+Rost|Eisenoxid
+Saeure|Stoff mit pH unter sieben
+Lauge|Basische Lösung
+Katalysator|Beschleunigt Reaktionen
+Kristall|Regelmäßig gebauter Festkörper
+Quarz|Mineral der Uhren
+Granit|Hartes Tiefengestein
+Basalt|Vulkangestein in Säulen
+Marmor|Gestein von Carrara
+Schiefer|Gestein für Dächer
+Sandstein|Material der Frauenkirche
+Gneis|Metamorphes Gestein
+Kalk|Gestein der Kreidefelsen
+Kreide|Rügens weiße Felsen
+Bernstein|Fossiles Harz
+Diamant|Härtestes natürliches Material
+Rubin|Roter Edelstein
+Saphir|Blauer Edelstein
+Smaragd|Grüner Edelstein
+Topas|Gelber Edelstein
+Opal|Schillernder Schmuckstein
+Achat|Gebänderter Schmuckstein
+Perle|Schmuck aus der Auster
+Fossil|Versteinerter Rest
+Dinosaurier|Ausgestorbene Riesenechse
+Mammut|Eiszeitlicher Elefant
+Planet|Wandelstern
+Merkur|Sonnennächster Planet
+Venus|Abendstern
+Mars|Roter Planet
+Jupiter|Größter Planet
+Saturn|Planet mit den schönsten Ringen
+Uranus|Gekippter Eisriese
+Neptun|Äußerster Planet
+Pluto|Zwergplanet seit 2006
+Mond|Erdtrabant
+Komet|Schweifstern
+Meteor|Sternschnuppe
+Asteroid|Kleinplanet
+Galaxie|Sternsystem wie die Milchstraße
+Nebula|Sternennebel auf Latein
+Supernova|Explosion eines Sterns
+Orion|Sternbild des Himmelsjägers
+Sirius|Hellster Fixstern
+Polarstern|Weist nach Norden
+Teleskop|Fernrohr
+Satellit|Künstlicher Trabant
+Rakete|Antrieb ins All
+Astronaut|Raumfahrer
+Kosmonaut|Russischer Raumfahrer
+Gagarin|Erster Mensch im All
+Armstrong|Erster Mensch auf dem Mond
+Apollo|Mondprogramm der NASA
+Sputnik|Erster Satellit
+Gravitation|Schwerkraft
+Vakuum|Luftleerer Raum
+Frequenz|Schwingungen pro Sekunde
+Laser|Gebündeltes Licht
+Radar|Ortung durch Funkwellen
+Sonar|Ortung durch Schall unter Wasser
+Prisma|Zerlegt Licht in Farben
+Linse|Optisches Glas, auch Hülsenfrucht
+Magnet|Zieht Eisen an
+Kompass|Zeigt nach Norden
+Barometer|Misst Luftdruck
+Thermometer|Misst Temperatur
+Hebel|Kraftverstärker nach Archimedes
+Zahnrad|Teil eines Getriebes
+Turbine|Rotierende Kraftmaschine
+Dynamo|Stromerzeuger am Fahrrad
+Batterie|Stromspeicher
+Akku|Wiederaufladbarer Stromspeicher
+Algorithmus|Rechenvorschrift
+Pixel|Bildpunkt
+Server|Rechner im Netz
+Browser|Programm zum Surfen
+Passwort|Geheimes Kennwort
+Tastatur|Eingabegerät mit QWERTZ
+Monitor|Bildschirm
+Drucker|Ausgabegerät für Papier
+Router|Gerät fürs heimische WLAN
+Modem|Gerät, das früher piepste
+Virus|Krankheitserreger oder Schadprogramm
+Cookie|Keks oder Datenkrümel
+Bluetooth|Funk nach einem Wikingerkönig benannt
+Mikroskop|Vergrößert das Kleine
+Skalpell|Messer des Chirurgen
+Stethoskop|Hörrohr des Arztes
+Narkose|Betäubung
+Impfung|Vorbeugung gegen Infektionen
+Antibiotikum|Mittel gegen Bakterien
+Penicillin|Flemings Schimmelpilz-Entdeckung
+Aspirin|Bekanntes Schmerzmittel von Bayer
+Plazebo|Scheinmedikament
+Diagnose|Feststellung einer Krankheit
+Therapie|Behandlung
+Allergie|Überempfindlichkeit
+Migraene|Starker Kopfschmerz
+Fraktur|Knochenbruch, auch Schrift
+Herz|Pumpe des Körpers
+Lunge|Atmungsorgan
+Leber|Größte Drüse des Körpers
+Niere|Filterorgan
+Milz|Organ links im Oberbauch
+Magen|Verdauungsorgan
+Darm|Langes Verdauungsorgan
+Gehirn|Denkorgan
+Nerv|Leitet Reize
+Muskel|Bizeps zum Beispiel
+Sehne|Verbindet Muskel und Knochen
+Knorpel|Elastisches Stützgewebe
+Wirbel|Knochen der Säule
+Rippe|Knochen des Brustkorbs
+Elle|Unterarmknochen, auch altes Maß
+Speiche|Unterarmknochen, auch Radteil
+Femur|Oberschenkelknochen
+Schaedel|Kopfknochen
+Kiefer|Kauknochen, auch Nadelbaum
+Iris|Regenbogenhaut
+Pupille|Sehloch
+Netzhaut|Retina
+Trommelfell|Membran im Ohr
+Ader|Blutgefäß
+Arterie|Schlagader
+Vene|Blutgefäß zum Herzen
+Puls|Herzschlag am Handgelenk
+Adrenalin|Stresshormon
+Dopamin|Glückshormon
+Serotonin|Botenstoff der Stimmung
+Kalorie|Energieeinheit der Nahrung
+Statistik|Lehre von den Daten
+Prozent|Hundertstel
+Promille|Tausendstel
+Bruch|Zähler durch Nenner
+Primzahl|Nur durch eins und sich selbst teilbar
+Quadrat|Rechteck mit gleichen Seiten
+Wurzel|Umkehrung der Potenz
+Kreis|Rund mit Pi
+Kugel|Runder Körper
+Wuerfel|Körper mit sechs Flächen
+Pyramide|Körper der Pharaonen
+Zylinder|Hut oder geometrischer Körper
+Kegel|Körper mit Spitze, auch beim Bowling
+Ellipse|Gestreckter Kreis
+Hypotenuse|Längste Seite im rechtwinkligen Dreieck
+Vektor|Größe mit Richtung
+Matrix|Zahlenschema, auch Film
+Integral|Fläche unter der Kurve
+Logik|Lehre vom richtigen Schließen
+Paradoxon|Scheinbarer Widerspruch
+Hypothese|Unbewiesene Annahme
+Theorie|Wissenschaftliches Erklärungsmodell
+Experiment|Wissenschaftlicher Versuch
+Labor|Arbeitsstätte des Chemikers

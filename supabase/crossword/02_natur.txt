@@ -1,0 +1,231 @@
+Luchs|Raubkatze mit Pinselohren
+Wisent|Europäisches Wildrind
+Elch|Größter Hirsch der Welt
+Rentier|Zugtier des Weihnachtsmanns
+Gaemse|Kletterkünstlerin der Alpen
+Steinbock|Wappentier Graubündens, auch ein Sternzeichen
+Murmeltier|Pfeifender Alpenbewohner im Winterschlaf
+Dachs|Grimbart in der Fabel
+Fuchs|Reineke in der Fabel
+Wolf|Isegrim in der Fabel
+Baer|Petz in der Fabel
+Hase|Meister Lampe
+Igel|Stacheliger Schneckenfresser
+Iltis|Marderart mit strengem Geruch
+Hermelin|Wiesel im weißen Winterfell
+Otter|Wassermarder
+Biber|Baumeister am Fluss
+Bisam|Ratte mit wertvollem Fell
+Lemming|Nagetier, dem Massenselbstmord angedichtet wird
+Hamster|Nagetier mit Backentaschen
+Maulwurf|Blinder Gräber
+Fledermaus|Ortet per Ultraschall, auch eine Operette
+Wiesel|Flinker kleiner Marder
+Faultier|Langsamster Säuger der Welt
+Ameisenbaer|Langschnauziger Insektenfresser Südamerikas
+Guerteltier|Gepanzerter Säuger Amerikas
+Tapir|Rüsseltier der Tropen
+Okapi|Waldgiraffe
+Gnu|Antilope der großen Wanderung
+Antilope|Huftier der Savanne
+Gazelle|Grazile Antilope
+Zebra|Gestreiftes Steppenpferd
+Nashorn|Dickhäuter mit Horn
+Flusspferd|Hippopotamus
+Gorilla|Größter Menschenaffe
+Orang|Menschenaffe Borneos (Kurzform)
+Pavian|Affe mit auffälligem Gesäß
+Lemur|Feuchtnasenaffe Madagaskars
+Koala|Eukalyptusfresser
+Wombat|Australischer Beutler mit würfelförmigem Kot
+Kaenguru|Springender Beutler
+Dingo|Wildhund Australiens
+Schnabeltier|Eierlegendes Säugetier
+Kojote|Präriewolf
+Puma|Berglöwe
+Jaguar|Größte Katze Amerikas
+Ozelot|Gefleckte Kleinkatze Südamerikas
+Gepard|Schnellstes Landtier
+Leopard|Gefleckte Großkatze
+Panther|Schwarze Großkatze
+Tiger|Größte Raubkatze
+Hyaene|Lachender Aasfresser
+Schakal|Wildhund des Orients
+Lama|Spuckendes Kamel der Anden
+Alpaka|Wollspender der Anden
+Kamel|Wüstenschiff mit zwei Höckern
+Dromedar|Einhöckriges Kamel
+Yak|Langhaariges Rind Tibets
+Walross|Robbe mit Stoßzähnen
+Robbe|Flossenfüßer
+Seehund|Robbe des Wattenmeers
+Delfin|Flipper war einer
+Orca|Schwertwal
+Narwal|Wal mit langem Stoßzahn
+Pottwal|Moby Dick war einer
+Krake|Achtarmiger Tintenfisch
+Qualle|Nesselnder Meeresbewohner
+Seestern|Stachelhäuter in Sternform
+Hummer|Edelkrebs mit großen Scheren
+Languste|Scherenloser Edelkrebs
+Auster|Muschel, die Perlen bilden kann
+Hering|Matjes ist ein junger
+Sprotte|Kleiner Fisch, geräuchert aus Kiel
+Dorsch|Junger Kabeljau der Ostsee
+Kabeljau|Fisch fürs Fischstäbchen
+Scholle|Plattfisch
+Zander|Raubfisch, auch Hechtbarsch genannt
+Hecht|Räuber mit Entenschnabel
+Karpfen|Silvesterfisch
+Forelle|Fisch aus Schuberts Quintett
+Lachs|Fisch, der zum Laichen flussaufwärts zieht
+Stoer|Lieferant echten Kaviars
+Aal|Schlangenförmiger Fisch, laicht in der Sargassosee
+Barsch|Stachelflossiger Süßwasserfisch
+Piranha|Gefürchteter Fisch des Amazonas
+Rochen|Plattfisch mit Flügeln
+Hai|Raubfisch mit mehreren Zahnreihen
+Seepferdchen|Fisch, bei dem das Männchen trägt
+Adler|Wappenvogel Deutschlands
+Bussard|Häufigster Greifvogel Deutschlands
+Falke|Schnellster Vogel im Sturzflug
+Habicht|Greifvogel mit Hühnervorliebe
+Sperber|Kleiner Greifvogel, Jäger der Singvögel
+Milan|Greifvogel mit gegabeltem Schwanz
+Geier|Aasfressender Greifvogel
+Kondor|Größter Greifvogel der Anden
+Uhu|Größte Eule Europas
+Kauz|Eule, auch sonderbarer Mensch
+Specht|Trommler im Wald
+Kuckuck|Brutparasit mit Ruf
+Pirol|Gelber Vogel mit flötendem Ruf
+Eisvogel|Blauer Fischjäger
+Zaunkoenig|Winziger Vogel mit lautem Gesang
+Rotkehlchen|Vogel mit oranger Brust
+Amsel|Schwarzdrossel
+Drossel|Vogelfamilie der Amsel
+Lerche|Singt im Steigflug
+Nachtigall|Berühmte Sängerin der Nacht
+Meise|Kohl- oder Blauvogel am Futterhaus
+Spatz|Gassenvogel
+Elster|Diebischer schwarz-weißer Rabenvogel
+Dohle|Kleiner Rabenvogel
+Kraehe|Rabenvogel, Nebel- oder Raben...
+Rabe|Odins Boten Hugin und Munin
+Storch|Soll angeblich die Babys bringen
+Kranich|Glücksvogel mit großem Zug im Herbst
+Reiher|Grauer Stelzvogel am Teich
+Schwan|Vogel aus Tschaikowskis Ballett
+Moewe|Kreischender Küstenvogel
+Pinguin|Frackträger der Antarktis
+Albatros|Vogel mit größter Flügelspannweite
+Pelikan|Vogel mit Kehlsack
+Flamingo|Rosa Watvogel
+Papagei|Sprechender Vogel
+Kolibri|Kleinster Vogel der Welt
+Strauss|Größter Vogel der Welt
+Emu|Laufvogel Australiens
+Kiwi|Nationalvogel Neuseelands, auch Frucht
+Fasan|Jagdvogel mit langem Schwanz
+Wachtel|Kleiner Hühnervogel
+Auerhahn|Balzender Waldvogel
+Leguan|Echse der Galapagosinseln
+Gecko|Echse, die an Wänden läuft
+Chamaeleon|Echse, die die Farbe wechselt
+Waran|Größte Echse, z. B. der Komodo...
+Viper|Giftschlange, auch Otter genannt
+Kobra|Brillenschlange
+Python|Würgeschlange, auch Programmiersprache
+Natter|Ungiftige Schlange
+Molch|Schwanzlurch im Teich
+Salamander|Feuer... in Schwarz-Gelb
+Kroete|Warziger Froschlurch
+Unke|Pessimist, auch ein Froschlurch
+Libelle|Insekt, auch Wasserwaage-Bläschen
+Hornisse|Größte heimische Wespe
+Hummel|Pelziger Brummer
+Grille|Zirpendes Insekt
+Zikade|Singendes Insekt des Südens
+Termite|Insekt, das Holz frisst
+Motte|Schädling im Kleiderschrank
+Raupe|Larve des Schmetterlings
+Kokon|Gespinst der Puppe
+Skorpion|Spinnentier mit Giftstachel
+Tarantel|Wolfsspinne, nach Tarent benannt
+Zecke|Holzbock
+Eiche|Baum, dessen Zweig auf alten Pfennigen prangte
+Buche|Baum, dem das Buch seinen Namen verdankt
+Linde|Baum vor dem Brunnen vor dem Tore
+Birke|Baum mit weißer Rinde
+Erle|Baum am Wasser, Erlkönig
+Esche|Weltenbaum Yggdrasil
+Ahorn|Baum mit Sirup
+Ulme|Baum mit geflügelten Nüsschen, vom Splintkäfer bedroht
+Pappel|Hoher schmaler Baum der Alleen
+Weide|Baum mit Kätzchen, auch Grasland
+Tanne|Klassischer Weihnachtsbaum
+Fichte|Häufigster Baum Deutschlands
+Kiefer|Föhre, auch ein Knochen
+Laerche|Nadelbaum, der im Herbst kahl wird
+Eibe|Giftiger Nadelbaum
+Zeder|Baum des Libanon
+Zypresse|Schlanker Baum der Toskana
+Olive|Frucht des Ölbaums
+Kastanie|Marone
+Holunder|Strauch mit schwarzen Beeren
+Wacholder|Strauch, der dem Gin den Geschmack gibt
+Ginster|Gelb blühender Strauch der Heide
+Heide|Lüneburger ...
+Efeu|Immergrüne Kletterpflanze
+Mistel|Schmarotzer in Baumkronen, Kussbrauch
+Farn|Sporenpflanze des Waldes
+Moos|Polsterpflanze im Schatten
+Flechte|Lebensgemeinschaft aus Pilz und Alge
+Pilz|Champignon oder Pfifferling
+Morchel|Frühjahrspilz mit Wabenhut
+Tulpe|Zwiebelblume aus Holland
+Narzisse|Osterglocke
+Krokus|Frühblüher aus der Zwiebel
+Lilie|Wappenblume der Bourbonen
+Orchidee|Blume mit vielen Arten, auch Vanille
+Edelweiss|Alpenblume, Symbol der Bergsteiger
+Enzian|Blaue Alpenblume, auch Schnaps
+Mohn|Rote Feldblume
+Kornblume|Blaue Feldblume
+Distel|Stachelige Pflanze, Wappen Schottlands
+Brennnessel|Pflanze, die brennt
+Loewenzahn|Pusteblume
+Kamille|Teepflanze gegen Bauchweh
+Lavendel|Duftende Pflanze der Provence
+Salbei|Heilkraut, auch eine Farbe
+Thymian|Kraut der Provence
+Rosmarin|Nadeliges Küchenkraut
+Basilikum|Kraut zum Pesto
+Petersilie|Küchenkraut, kraus oder glatt
+Schilf|Röhricht am Ufer
+Bambus|Futter des Pandas
+Kaktus|Stachelige Sukkulente
+Algen|Grüne Wasserpflanzen
+Pollen|Blütenstaub
+Nektar|Süßer Blütensaft
+Harz|Klebriger Saft der Nadelbäume
+Rinde|Borke
+Wurzel|Unterirdischer Pflanzenteil
+Knospe|Blüte vor dem Aufgehen
+Gewitter|Wetter mit Blitz und Donner
+Hagel|Eiskörner vom Himmel
+Graupel|Kleine weiche Eiskügelchen
+Nebel|Wolke am Boden
+Raureif|Eiskristalle an Zweigen
+Tau|Morgendliche Tropfen auf dem Gras
+Foehn|Warmer Fallwind der Alpen
+Monsun|Jahreszeitlicher Wind Asiens
+Taifun|Wirbelsturm im Pazifik
+Tornado|Windhose
+Orkan|Stärkster Wind der Beaufortskala
+Lawine|Abgang von Schneemassen
+Polarlicht|Aurora am Nachthimmel
+Regenbogen|Lichtbrechung in Tropfen
+Sonnenwende|Längster oder kürzester Tag
+Gezeiten|Ebbe und Flut
+Brandung|Wellen an der Küste

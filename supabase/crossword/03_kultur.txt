@@ -1,0 +1,231 @@
+Goethe|Dichter des Faust
+Schiller|Dichter der Glocke und der Räuber
+Lessing|Autor von Nathan der Weise
+Kleist|Dichter des Zerbrochnen Krugs
+Heine|Dichter der Loreley und des Wintermärchens
+Fontane|Autor von Effi Briest
+Storm|Dichter des Schimmelreiters
+Kafka|Autor der Verwandlung
+Hesse|Autor von Siddhartha und Steppenwolf
+Brecht|Dramatiker der Dreigroschenoper
+Grass|Autor der Blechtrommel
+Boell|Nobelpreisträger, Ansichten eines Clowns
+Remarque|Autor von Im Westen nichts Neues
+Kaestner|Autor von Emil und die Detektive
+Ende|Autor der Unendlichen Geschichte
+Busch|Schöpfer von Max und Moritz
+Grimm|Brüderpaar der Kinder- und Hausmärchen
+Andersen|Dänischer Märchendichter der kleinen Meerjungfrau
+Hauff|Autor von Zwerg Nase
+Rilke|Dichter des Panthers
+Hoelderlin|Dichter im Tübinger Turm
+Novalis|Dichter der blauen Blume
+Eichendorff|Dichter des Taugenichts
+Shakespeare|Schöpfer Hamlets
+Dante|Dichter der Göttlichen Komödie
+Homer|Dichter der Odyssee
+Ovid|Dichter der Metamorphosen
+Vergil|Dichter der Aeneis
+Cervantes|Schöpfer Don Quijotes
+Moliere|Französischer Komödiendichter des Geizigen
+Voltaire|Philosoph des Candide
+Tolstoi|Autor von Krieg und Frieden
+Tschechow|Dramatiker der Möwe
+Dickens|Autor von Oliver Twist
+Orwell|Autor von 1984
+Tolkien|Schöpfer Mittelerdes
+Poe|Dichter des Raben
+Twain|Schöpfer Tom Sawyers
+Hemingway|Autor von Der alte Mann und das Meer
+Kant|Philosoph aus Königsberg
+Hegel|Philosoph der Dialektik
+Nietzsche|Philosoph des Zarathustra
+Marx|Autor des Kapitals
+Platon|Schüler des Sokrates
+Sokrates|Philosoph, der den Schierlingsbecher trank
+Aristoteles|Lehrer Alexanders des Großen
+Seneca|Stoiker, Lehrer Neros
+Ballade|Erzählgedicht wie der Erlkönig
+Sonett|Gedicht aus vierzehn Zeilen
+Ode|Feierliches Gedicht
+Hymne|Feierlicher Lobgesang
+Epos|Großes Versgedicht
+Fabel|Tiergeschichte mit Moral
+Novelle|Erzählung einer unerhörten Begebenheit
+Roman|Lange Prosaerzählung
+Drama|Bühnenstück
+Tragoedie|Trauerspiel
+Komoedie|Lustspiel
+Satire|Spöttische Kritik in Kunstform
+Parodie|Verspottende Nachahmung
+Prolog|Vorrede
+Epilog|Nachwort
+Strophe|Gedichtabschnitt
+Reim|Gleichklang am Versende
+Metapher|Bildhafter Vergleich ohne wie
+Pseudonym|Künstlername
+Anekdote|Kurze pointierte Geschichte
+Aphorismus|Geistreicher Kurzsatz
+Bach|Thomaskantor in Leipzig
+Haendel|Komponist des Messias
+Mozart|Komponist der Zauberflöte
+Haydn|Komponist der Kaiserhymne
+Beethoven|Komponist der Neunten
+Schubert|Komponist der Winterreise
+Schumann|Komponist aus Zwickau
+Wagner|Komponist des Rings
+Brahms|Komponist des Wiegenlieds aus Hamburg
+Verdi|Komponist der Aida
+Puccini|Komponist der Tosca
+Rossini|Komponist des Barbiers von Sevilla
+Chopin|Polnischer Klavierpoet
+Liszt|Ungarischer Klaviervirtuose
+Strauss|Walzerkönig
+Mahler|Komponist der Symphonie der Tausend
+Orff|Komponist der Carmina Burana
+Weber|Komponist des Freischütz
+Vivaldi|Komponist der vier Jahreszeiten
+Oper|Musikdrama
+Operette|Leichte Oper wie die Fledermaus
+Arie|Sologesang in der Oper
+Libretto|Textbuch einer Oper
+Ouvertuere|Eröffnungsstück einer Oper
+Sinfonie|Großes Orchesterwerk
+Sonate|Instrumentalwerk, z. B. Mondschein...
+Fuge|Strenge kontrapunktische Form
+Kantate|Mehrsätziges Vokalwerk
+Requiem|Totenmesse
+Kanon|Lied, bei dem Stimmen versetzt einsetzen
+Motette|Mehrstimmiger geistlicher Gesang
+Partitur|Notenbuch des Dirigenten
+Dirigent|Taktgeber des Orchesters
+Sopran|Hohe Frauenstimme
+Alt|Tiefe Frauenstimme
+Tenor|Hohe Männerstimme
+Bariton|Mittlere Männerstimme
+Bass|Tiefste Stimme
+Akkord|Zusammenklang mehrerer Töne
+Oktave|Intervall über acht Töne
+Tonart|Dur oder Moll
+Takt|Rhythmische Einheit
+Tempo|Allegro oder Adagio
+Adagio|Langsam (Musik)
+Allegro|Schnell und heiter (Musik)
+Forte|Laut (Musik)
+Piano|Leise, auch ein Instrument
+Crescendo|Lauter werdend
+Geige|Violine
+Bratsche|Viola
+Cello|Kniegeige
+Harfe|Zupfinstrument mit vielen Saiten
+Laute|Mittelalterliches Zupfinstrument
+Zither|Zupfinstrument der Alpen
+Oboe|Doppelrohrblattinstrument
+Fagott|Tiefes Holzblasinstrument
+Klarinette|Holzblasinstrument mit einfachem Rohrblatt
+Floete|Blasinstrument, quer oder als Block
+Tuba|Tiefstes Blechblasinstrument
+Posaune|Blechblasinstrument mit Zug
+Horn|Blasinstrument der Jäger, auch Trinkgefäß
+Trompete|Blechblasinstrument der Fanfare
+Orgel|Königin der Instrumente
+Cembalo|Kielflügel des Barock
+Pauke|Kesseltrommel
+Triangel|Dreieckiges Schlaginstrument
+Akkordeon|Ziehharmonika
+Banjo|Zupfinstrument des Bluegrass
+Ukulele|Kleine Gitarre aus Hawaii
+Sitar|Indisches Zupfinstrument
+Jazz|Musik von Armstrong und Coltrane
+Blues|Melancholische Musik aus dem Mississippi-Delta
+Reggae|Musik Bob Marleys
+Techno|Elektronische Musik der Loveparade
+Gospel|Geistliche Musik der Afroamerikaner
+Schlager|Deutsche Unterhaltungsmusik
+Polka|Böhmischer Rundtanz
+Walzer|Tanz im Dreivierteltakt
+Tango|Tanz aus Buenos Aires
+Samba|Tanz des Karnevals in Rio
+Salsa|Kubanisch geprägter Tanz, auch eine Soße
+Ballett|Bühnentanz auf Spitzen
+Pirouette|Drehung auf einem Bein
+Duerer|Maler des Hasen
+Cranach|Maler der Reformation aus Wittenberg
+Holbein|Maler Heinrichs VIII.
+Rembrandt|Maler der Nachtwache
+Vermeer|Maler des Mädchens mit dem Perlenohrring
+Rubens|Barockmaler üppiger Frauen
+Monet|Maler der Seerosen
+Manet|Maler des Frühstücks im Grünen
+Renoir|Impressionist des Bal du moulin de la Galette
+Degas|Maler der Tänzerinnen
+Cezanne|Maler der Montagne Sainte-Victoire
+Gauguin|Maler auf Tahiti
+Picasso|Maler von Guernica
+Dali|Surrealist der schmelzenden Uhren
+Miro|Katalanischer Surrealist
+Klimt|Maler des Kusses
+Schiele|Österreichischer Expressionist
+Munch|Maler des Schreis
+Kandinsky|Mitbegründer des Blauen Reiters
+Klee|Bauhaus-Maler aus der Schweiz
+Marc|Maler der blauen Pferde
+Macke|Maler aus dem Blauen Reiter, gefallen 1914
+Nolde|Expressionist der Blumen und des Meeres
+Richter|Gerhard, Maler aus Dresden
+Warhol|Pop-Art-Künstler der Suppendosen
+Banksy|Anonymer Street-Art-Künstler
+Bauhaus|Kunstschule in Weimar und Dessau
+Barock|Kunstepoche des Zwingers
+Gotik|Epoche der Spitzbögen
+Romanik|Epoche der Rundbögen
+Rokoko|Verspielte Spätform des Barock
+Klassizismus|Stil des Brandenburger Tors
+Jugendstil|Art nouveau auf Deutsch
+Expressionismus|Kunst der Brücke und des Blauen Reiters
+Fresko|Malerei auf feuchtem Putz
+Mosaik|Bild aus Steinchen
+Aquarell|Bild in Wasserfarben
+Skizze|Entwurfszeichnung
+Staffelei|Gestell des Malers
+Palette|Farbbrett des Malers
+Leinwand|Malgrund oder Kinoschirm
+Skulptur|Bildhauerwerk
+Relief|Erhabenes Bild
+Buehne|Spielfläche im Theater
+Kulisse|Bühnenhintergrund
+Souffleuse|Einflüsterin im Theater
+Regie|Spielleitung
+Premiere|Erstaufführung
+Applaus|Beifall
+Zugabe|Nachschlag nach dem Konzert
+Matinee|Vormittagsvorstellung
+Kabarett|Politische Kleinkunst
+Pantomime|Darstellung ohne Worte
+Marionette|Puppe an Fäden
+Kasper|Held des Puppentheaters
+Zirkus|Manege mit Artisten
+Jongleur|Artist mit Bällen und Keulen
+Akrobat|Turnkünstler
+Clown|Spaßmacher mit roter Nase
+Oscar|Filmpreis aus Hollywood
+Berlinale|Filmfestival mit dem Goldenen Bären
+Cannes|Filmfestival mit der Goldenen Palme
+Drehbuch|Vorlage für den Film
+Kamera|Aufnahmegerät
+Trailer|Filmvorschau
+Abspann|Liste am Filmende
+Sitcom|Komödienserie mit Lachern
+Krimi|Tatort ist einer
+Western|Film mit Cowboys
+Thriller|Spannungsfilm
+Musical|Bühnenstück mit Gesang, z. B. Cats
+Feuilleton|Kulturteil der Zeitung
+Glosse|Kurzer spöttischer Kommentar
+Rezension|Kritik eines Buches
+Bestseller|Verkaufsschlager im Buchhandel
+Bibliothek|Bücherei
+Antiquariat|Laden für alte Bücher
+Lektor|Prüft Manuskripte im Verlag
+Verlag|Herausgeber von Büchern
+Nobelpreis|Höchste Auszeichnung aus Stockholm

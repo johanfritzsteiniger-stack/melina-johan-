@@ -1,0 +1,297 @@
+Brot|Grundnahrungsmittel vom Bäcker
+Brezel|Gebäck mit verschlungenen Armen
+Semmel|Brötchen in Bayern und Sachsen
+Stollen|Dresdner Weihnachtsgebäck
+Lebkuchen|Nürnberger Weihnachtsgebäck
+Spekulatius|Gewürzkeks mit Bildmotiv
+Pfefferkuchen|Lebkuchen aus Pulsnitz
+Quarkkeulchen|Sächsische Pfannkuchen aus Quark
+Eierschecke|Sächsischer Kuchen mit drei Schichten
+Bienenstich|Kuchen mit Mandeln und Creme
+Strudel|Wiener Teigrolle mit Apfel
+Kaiserschmarrn|Zerrissener Pfannkuchen aus Österreich
+Knoedel|Klöße auf Bayerisch
+Spaetzle|Schwäbische Teigwaren
+Maultasche|Herrgottsbscheißerle
+Sauerbraten|Marinierter Rinderbraten
+Rouladen|Gerollte Fleischscheiben
+Gulasch|Ungarischer Eintopf
+Eintopf|Alles in einem Topf
+Schnitzel|Wiener Spezialität
+Bratwurst|Thüringer Grillgut
+Currywurst|Berliner Imbissklassiker
+Leberkaese|Weder Leber noch Käse in Bayern
+Weisswurst|Darf das Zwölfuhrläuten nicht hören
+Senf|Mostrich
+Meerrettich|Kren
+Sauerkraut|Vergorener Weißkohl
+Rotkohl|Blaukraut
+Kartoffel|Erdapfel
+Pommes|Frittierte Kartoffelstäbchen
+Spargel|Weißes Frühlingsgemüse
+Gurke|Spreewälder Spezialität
+Zwiebel|Gemüse, das zum Weinen bringt
+Knoblauch|Mittel gegen Vampire
+Paprika|Schote, auch Gewürz
+Tomate|Paradeiser
+Aubergine|Eierfrucht
+Zucchini|Kürbisgewächs fürs Ratatouille
+Kuerbis|Gemüse an Halloween
+Linsen|Hülsenfrüchte mit Spätzle
+Erbse|Prinzessin auf der ...
+Bohne|Hülsenfrucht, auch Kaffee...
+Pilze|Champignons und Pfifferlinge
+Pfifferling|Gelber Speisepilz, auch Wertloses
+Apfel|Obst des Paradieses
+Birne|Obst oder Glühkörper
+Pflaume|Zwetschge
+Kirsche|Rote Steinfrucht
+Aprikose|Marille
+Pfirsich|Samtige Steinfrucht
+Mango|Tropische Steinfrucht
+Ananas|Tropenfrucht mit Krone
+Banane|Krumme Südfrucht
+Zitrone|Saure Zitrusfrucht
+Orange|Apfelsine
+Mandarine|Kleine Zitrusfrucht
+Feige|Frucht, deren Blatt Adam trug
+Dattel|Frucht der Palme
+Rosine|Getrocknete Weinbeere
+Mandel|Steinfrucht, auch Organ im Rachen
+Walnuss|Nuss, die einem Gehirn ähnelt
+Haselnuss|Nuss im Nutella
+Erdnuss|Keine echte Nuss, wächst im Boden
+Honig|Süßes von der Biene
+Zucker|Süßungsmittel aus Rübe oder Rohr
+Salz|Natriumchlorid
+Pfeffer|Scharfes Gewürz, schwarz oder weiß
+Zimt|Gewürz aus Baumrinde
+Nelke|Gewürz oder Blume
+Vanille|Gewürz aus einer Orchidee
+Safran|Teuerstes Gewürz
+Kurkuma|Gelbwurz
+Ingwer|Scharfe Wurzel
+Muskat|Nussgewürz
+Essig|Saure Würze
+Butter|Fett aus Sahne
+Sahne|Rahm
+Joghurt|Gesäuerte Milch
+Quark|Topfen
+Kaese|Gouda oder Emmentaler
+Camembert|Weichkäse aus der Normandie
+Parmesan|Hartkäse aus Italien
+Mozzarella|Käse auf der Pizza
+Pizza|Italienischer Fladen
+Pasta|Nudeln auf Italienisch
+Risotto|Italienisches Reisgericht
+Lasagne|Nudelauflauf in Schichten
+Paella|Spanisches Reisgericht
+Sushi|Japanische Reishappen
+Ramen|Japanische Nudelsuppe
+Curry|Indisches Gericht
+Burger|Brötchen mit Frikadelle
+Frikadelle|Bulette
+Omelett|Eierspeise
+Muesli|Frühstück mit Haferflocken
+Porridge|Haferbrei
+Kaffee|Bohnengetränk
+Espresso|Starker kleiner Kaffee
+Cappuccino|Kaffee mit Milchschaum
+Tee|Aufgussgetränk
+Kakao|Getränk aus Bohnen
+Limonade|Süßes Sprudelgetränk
+Schorle|Saft mit Sprudel
+Bier|Getränk aus Hopfen und Malz
+Pils|Herbes Bier nach böhmischer Brauart
+Weizen|Hefebier
+Radler|Bier mit Limo
+Wein|Rebensaft
+Sekt|Schaumwein
+Gluehwein|Getränk vom Weihnachtsmarkt
+Schnaps|Hochprozentiges
+Likoer|Süßer Schnaps
+Kueche|Ort zum Kochen
+Herd|Kochstelle
+Ofen|Backgerät
+Pfanne|Bratgerät
+Topf|Kochgefäß
+Kelle|Schöpflöffel
+Sieb|Durchschlag
+Schuessel|Gefäß für Salat
+Teller|Essgeschirr
+Gabel|Besteck mit Zinken
+Loeffel|Besteck für Suppe
+Messer|Schneidewerkzeug
+Tisch|Möbel zum Essen
+Stuhl|Sitzmöbel
+Sofa|Couch
+Sessel|Polsterstuhl
+Regal|Bücherbord
+Schrank|Kleidermöbel
+Bett|Schlafmöbel
+Kissen|Kopfpolster
+Decke|Plaid oder Zimmerobergrenze
+Teppich|Bodenbelag
+Vorhang|Gardine
+Lampe|Leuchte
+Spiegel|Reflektierendes Glas
+Fenster|Glasöffnung in der Wand
+Tuer|Eingang
+Treppe|Stufenfolge
+Keller|Untergeschoss
+Dachboden|Speicher unterm Dach
+Balkon|Austritt am Haus
+Garten|Grünfläche am Haus
+Garage|Autounterstand
+Schluessel|Öffner fürs Schloss
+Schloss|Burg oder Verschluss
+Klingel|Türglocke
+Briefkasten|Behälter für Post
+Paket|Postsendung
+Brief|Schriftliche Nachricht
+Umschlag|Kuvert
+Stempel|Abdruckwerkzeug
+Kalender|Terminplaner
+Termin|Verabredung
+Uhr|Zeitmesser
+Wecker|Morgenstörer
+Handy|Mobiltelefon
+Ladekabel|Stromverbindung fürs Handy
+Fernseher|Glotze
+Radio|Rundfunkgerät
+Staubsauger|Haushaltsgerät für Teppiche
+Waschmaschine|Gerät für schmutzige Wäsche
+Spuelmaschine|Geschirrspüler
+Kuehlschrank|Kälteschrank
+Toaster|Brotröster
+Mixer|Küchengerät für Smoothies
+Buegeleisen|Glättet Hemden
+Schirm|Regenschutz
+Mantel|Überzieher
+Jacke|Kurzer Mantel
+Pulli|Strickoberteil
+Hemd|Oberteil mit Knöpfen
+Hose|Beinkleid
+Rock|Kleidungsstück oder Musikrichtung
+Kleid|Damengewand
+Schal|Halswärmer
+Muetze|Kopfbedeckung im Winter
+Handschuh|Fingerwärmer
+Stiefel|Hoher Schuh
+Socke|Strumpf
+Guertel|Hosenhalter
+Krawatte|Schlips
+Brille|Sehhilfe
+Ring|Schmuck am Finger
+Kette|Halsschmuck
+Uhrarmband|Hält die Uhr am Handgelenk
+Geldbeutel|Portemonnaie
+Rechnung|Zahlungsaufforderung
+Quittung|Zahlungsbeleg
+Miete|Monatliche Wohnkosten
+Gehalt|Lohn
+Rabatt|Preisnachlass
+Trinkgeld|Extra für den Kellner
+Einkauf|Besorgung
+Supermarkt|Lebensmittelladen
+Baecker|Brotverkäufer
+Metzger|Fleischer
+Apotheke|Arzneiladen
+Friseur|Haarschneider
+Post|Briefzusteller
+Bahnhof|Zugstation
+Haltestelle|Bushalt
+Ampel|Verkehrsregler mit drei Farben
+Kreisverkehr|Kreisel
+Autobahn|Schnellstraße
+Stau|Stillstand auf der Straße
+Tankstelle|Zapfsäulen-Ort
+Parkplatz|Abstellfläche
+Fuehrerschein|Fahrerlaubnis
+Blitzer|Radarfalle
+Strafzettel|Knöllchen
+Nachbar|Mensch nebenan
+Freund|Vertrauter Mensch
+Familie|Verwandtschaft
+Oma|Großmutter
+Opa|Großvater
+Tante|Schwester der Mutter
+Onkel|Bruder des Vaters
+Cousine|Tochter der Tante
+Neffe|Sohn des Bruders
+Nichte|Tochter der Schwester
+Schwager|Mann der Schwester
+Hochzeit|Vermählung
+Jubilaeum|Jahrestag
+Geburtstag|Wiegenfest
+Geschenk|Präsent
+Party|Feier
+Gast|Besucher
+Kuss|Schmatz
+Umarmung|Herzliche Begrüßung
+Laecheln|Freundlicher Gesichtsausdruck
+Witz|Scherz
+Ironie|Gegenteil gemeint
+Sarkasmus|Bissiger Spott
+Humor|Lebensfrohsinn
+Laune|Stimmung
+Geduld|Langmut
+Neugier|Wissensdurst
+Mut|Tapferkeit
+Angst|Furcht
+Freude|Frohsinn
+Traum|Nächtliches Kopfkino
+Schlaf|Nachtruhe
+Gedanke|Einfall
+Idee|Geistesblitz
+Plan|Vorhaben
+Ziel|Endpunkt
+Sieg|Gewinn eines Kampfes
+Wette|Abmachung mit Einsatz
+Einsatz|Was bei einer Wette auf dem Spiel steht
+Gewinner|Sieger
+Verlierer|Zweiter von zwei
+Revanche|Rückspiel
+Duell|Zweikampf
+Rangliste|Ranking
+Punkte|Zählbare Erfolge
+Bonus|Zusatzprämie
+Joker|Hilfe im Quiz
+Raetsel|Knobelaufgabe
+Loesung|Antwort auf ein Rätsel
+Hinweis|Tipp
+Buchstabe|Zeichen des Alphabets
+Silbe|Sprechbaustein
+Vokal|Selbstlaut
+Konsonant|Mitlaut
+Umlaut|Ä, Ö oder Ü
+Komma|Satzzeichen zur Pause
+Punkt|Satzende
+Anfang|Beginn
+Ende|Schluss
+Pause|Unterbrechung
+Morgen|Tagesbeginn oder der nächste Tag
+Abend|Tagesausklang
+Nacht|Dunkle Tageszeit
+Woche|Sieben Tage
+Monat|Zwölftel eines Jahres
+Jahr|Zwölf Monate
+Saison|Spielzeit
+Fruehling|Lenz
+Sommer|Heißeste Jahreszeit
+Herbst|Jahreszeit der bunten Blätter
+Winter|Kälteste Jahreszeit
+Advent|Vorweihnachtszeit
+Silvester|Letzter Tag des Jahres
+Neujahr|Erster Tag des Jahres
+Ostern|Fest mit Eiersuche
+Pfingsten|Fest fünfzig Tage nach Ostern
+Fasching|Karneval
+Nikolaus|Bringt am sechsten Dezember Geschenke
+Weihnachten|Fest am vierundzwanzigsten Dezember
+Kerze|Wachslicht
+Lametta|Glitzerschmuck am Baum
+Schwibbogen|Erzgebirgischer Lichterbogen
+Raeuchermann|Erzgebirgische Rauchfigur
+Nussknacker|Holzfigur, die Nüsse knackt
+Pyramide|Drehender Weihnachtsschmuck aus dem Erzgebirge

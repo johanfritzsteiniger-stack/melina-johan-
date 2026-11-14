@@ -1,0 +1,193 @@
+Biathlon|Langlauf und Schießen
+Loipe|Spur für Langläufer
+Skating|Freie Technik im Langlauf
+Klassisch|Langlauftechnik in der Spur
+Strafrunde|Extrarunde nach einem Fehlschuss
+Schiessstand|Ort der Liegend- und Stehendanlage
+Liegend|Erste Schießposition im Biathlon
+Stehend|Zweite Schießposition im Biathlon
+Kaliber|Laufweite, im Biathlon 5,6 mm
+Massenstart|Biathlon-Rennen mit gemeinsamem Start
+Verfolgung|Biathlon-Wettbewerb nach Sprintabständen
+Sprint|Kurzes schnelles Rennen
+Staffel|Mannschaftswettbewerb mit Übergabe
+Wachs|Mittel für die Skilauffläche
+Rodeln|Schlittenfahren
+Bob|Schlitten im Eiskanal
+Skeleton|Bäuchlings im Eiskanal
+Slalom|Torlauf
+Abfahrt|Schnellste alpine Disziplin
+Riesenslalom|Alpine Disziplin zwischen Slalom und Super-G
+Skisprung|Disziplin von der Schanze
+Schanze|Absprunganlage
+Telemark|Landestechnik beim Skispringen
+Snowboard|Brett für den Schnee
+Halfpipe|Halbrohr für Tricks
+Curling|Eisstockschießen der Schotten
+Eishockey|Sport mit Puck
+Puck|Hartgummischeibe
+Eiskunstlauf|Pirouetten auf Kufen
+Kufe|Gleitschiene am Schlittschuh
+Pistenbully|Raupenfahrzeug für die Piste
+Sessellift|Aufstiegshilfe mit Sitzen
+Gondel|Kabinenbahn oder venezianisches Boot
+Huette|Einkehr auf dem Berg
+Gipfelkreuz|Markierung am höchsten Punkt
+Steigeisen|Zackeneisen unter dem Bergschuh
+Karabiner|Schnapphaken der Kletterer
+Abseilen|Am Seil herunterlassen
+Bouldern|Klettern ohne Seil in Absprunghöhe
+Klettersteig|Via ferrata
+Wanderweg|Markierter Pfad
+Rucksack|Tasche auf dem Rücken
+Biwak|Notlager im Freien
+Zelt|Unterkunft aus Stoff
+Isomatte|Unterlage im Schlafsack
+Lagerfeuer|Feuer am Zeltplatz
+Kompass|Navigationsgerät mit Nadel
+Wildcamping|Übernachten außerhalb von Campingplätzen
+Fussball|Spiel mit Abseitsregel
+Abseits|Fußballregel, die keiner versteht
+Elfmeter|Strafstoß
+Freistoss|Ruhender Ball nach einem Foul
+Eckstoss|Corner
+Torwart|Keeper
+Libero|Freier Mann hinter der Abwehr
+Stuermer|Angreifer im Fußball
+Verteidiger|Abwehrspieler
+Schiedsrichter|Unparteiischer
+Abpfiff|Spielende
+Anpfiff|Spielbeginn
+Halbzeit|Pause nach 45 Minuten
+Nachspielzeit|Zuschlag nach 90 Minuten
+Pokal|Trophäe
+Meisterschaft|Titelwettbewerb
+Bundesliga|Höchste deutsche Spielklasse
+Derby|Lokalduell
+Trikot|Spielerhemd
+Kopfball|Ball mit der Stirn gespielt
+Fallrueckzieher|Akrobatischer Schuss über den Kopf
+Handball|Sport mit Kreis und Siebenmeter
+Volleyball|Sport mit Netz und Pritschen
+Basketball|Korbball
+Tennis|Sport mit Aufschlag und Satz
+Badminton|Federballspiel
+Tischtennis|Pingpong
+Golf|Sport mit Eisen und Putter
+Rugby|Sport mit dem Ei
+Baseball|Amerikas Schlagballspiel
+Cricket|Englisches Schlagballspiel
+Polo|Ballspiel zu Pferd
+Hockey|Spiel mit Schläger und Kugel
+Boxen|Faustkampf
+Ringen|Kampfsport am Boden
+Judo|Sanfter Weg aus Japan
+Karate|Leere Hand
+Fechten|Kampf mit Florett und Degen
+Florett|Fechtwaffe
+Rudern|Sport im Achter
+Kanu|Paddelboot
+Segeln|Mit Wind auf dem Wasser
+Surfen|Wellenreiten
+Tauchen|Unterwassersport
+Schwimmen|Kraul oder Brust
+Kraulen|Schnellster Schwimmstil
+Turnen|Reck und Barren
+Reck|Turngerät mit Stange
+Barren|Turngerät mit zwei Holmen
+Ringe|Turngerät an Seilen
+Trampolin|Sprunggerät
+Marathon|Lauf über 42,195 Kilometer
+Triathlon|Schwimmen, Radfahren, Laufen
+Zehnkampf|Königsdisziplin der Leichtathletik
+Hochsprung|Disziplin mit Fosbury-Flop
+Weitsprung|Disziplin mit Sandgrube
+Stabhochsprung|Springen mit Stange
+Speerwurf|Wurfdisziplin mit dem Speer
+Diskus|Wurfscheibe
+Hammerwurf|Wurf mit Kugel am Draht
+Kugelstossen|Wurf mit der Kugel
+Huerden|Hindernisse beim Lauf
+Startblock|Absprunghilfe des Sprinters
+Stoppuhr|Zeitmesser
+Ziellinie|Ende des Rennens
+Fotofinish|Entscheidung per Kamerabild
+Rekord|Bestleistung
+Olympia|Spiele alle vier Jahre
+Medaille|Gold, Silber oder Bronze
+Siegertreppchen|Podest
+Trainer|Coach
+Uebungsleiter|Trainer im Verein mit Lizenz
+Aufwaermen|Vorbereitung vor dem Sport
+Dehnen|Stretching
+Muskelkater|Schmerz am Tag danach
+Intervall|Trainingsform mit Wechsel von Belastung
+Ausdauer|Kondition über lange Zeit
+Kondition|Körperliche Fitness
+Doping|Unerlaubte Leistungssteigerung
+Fairplay|Sportliches Verhalten
+Schach|Spiel der Könige
+Rochade|Zug mit König und Turm
+Gambit|Eröffnung mit Bauernopfer
+Schachmatt|Ende im Schach
+Patt|Remis ohne Zugmöglichkeit
+Laeufer|Schachfigur, auch Teppich
+Springer|Schachfigur in L-Form
+Turm|Schachfigur oder Bauwerk
+Dame|Mächtigste Schachfigur
+Skat|Kartenspiel mit Reizen
+Doppelkopf|Kartenspiel mit zwei Damen
+Poker|Kartenspiel mit Bluff
+Joker|Trumpfkarte
+Domino|Spiel mit Steinen
+Mikado|Spiel mit Stäbchen
+Puzzle|Legespiel
+Sudoku|Zahlenrätsel
+Wuerfel|Spielstein mit Augen
+Bowling|Kegeln mit zehn Pins
+Darts|Pfeilwerfen
+Billard|Spiel mit Queue
+Minigolf|Golf auf kleinen Bahnen
+Karaoke|Singen zur Musik vom Band
+Picknick|Essen im Grünen
+Grillen|Brutzeln über Glut
+Fahrrad|Drahtesel
+Tandem|Rad für zwei
+Mountainbike|Rad fürs Gelände
+Velo|Fahrrad auf Schweizerisch
+Inliner|Rollschuhe in einer Reihe
+Skateboard|Rollbrett
+Hobby|Steckenpferd
+Ausflug|Kleine Reise
+Urlaub|Erholungszeit
+Reise|Fahrt in die Ferne
+Koffer|Reisegepäck
+Strand|Sandufer am Meer
+Sonnenbrand|Folge zu langen Sonnenbads
+Liegestuhl|Ruhemöbel am Pool
+Kreuzfahrt|Urlaub auf dem Schiff
+Wohnmobil|Camper
+Hostel|Günstige Herberge
+Pension|Kleines Hotel
+Rezeption|Empfang im Hotel
+Souvenir|Reiseandenken
+Postkarte|Gruß aus dem Urlaub
+Reisepass|Ausweis für die Welt
+Visum|Einreiseerlaubnis
+Flughafen|Airport
+Bordkarte|Boarding Pass
+Zoll|Grenzkontrolle für Waren
+Jetlag|Folge der Zeitverschiebung
+Spotify|Streamingdienst mit grünem Logo
+Playlist|Wiedergabeliste
+Podcast|Hörsendung auf Abruf
+Hoerbuch|Buch zum Hören
+Serie|Fortsetzungsfilm
+Kino|Lichtspielhaus
+Popcorn|Kinosnack
+Konzert|Musikveranstaltung
+Festival|Mehrtägige Musikveranstaltung
+Kirmes|Jahrmarkt
+Riesenrad|Fahrgeschäft mit Aussicht
+Achterbahn|Fahrgeschäft mit Loopings
+Karussell|Ringelspiel

@@ -40,4 +40,5 @@ npm run dev
 - [x] Schritt 3: Kalender und Countdowns (inkl. Personenfarben und eigenen Kategorien)
 - [x] Schritt 4: Battles (inkl. Spotify-Minuten)
 - [x] Schritt 5: Listen, Ausgaben, Ideen, Watchlist, Wetten (mit Archiv)
+- [x] Kreuzworträtsel: täglich neu, gemeinsam live lösen, Archiv, eigene Wörter (0008 + 0009 ausführen)
 - [x] Schritt 6: Push-Benachrichtigungen (Einrichtung: Einstellungen → Benachrichtigungen → Einrichtung)

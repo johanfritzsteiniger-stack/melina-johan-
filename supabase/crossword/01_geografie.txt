@@ -1,0 +1,254 @@
+Elbe|Fluss, an dem Dresden und Hamburg liegen
+Mulde|Fluss, der bei Dessau in die Elbe mündet
+Saale|Fluss durch Jena und Halle
+Spree|Berlins Fluss
+Havel|Fluss durch Potsdam
+Oder|Grenzfluss zu Polen
+Neisse|Fluss durch Görlitz
+Weser|Fluss der Bremer Stadtmusikanten
+Ems|Fluss durch Papenburg und Leer
+Mosel|Weinfluss, mündet am Deutschen Eck
+Lahn|Fluss durch Marburg und Gießen
+Main|Fluss, der Frankfurt teilt
+Neckar|Fluss durch Heidelberg und Tübingen
+Isar|Münchens Fluss
+Inn|Fluss, der bei Passau in die Donau mündet
+Donau|Europas zweitlängster Fluss
+Rhein|Strom der Loreley
+Ruhr|Namensgeber eines Ballungsraums
+Werra|Quellfluss der Weser neben der Fulda
+Fulda|Stadt und Fluss in Osthessen
+Ilm|Fluss durch Weimar
+Pleisse|Fluss durch Leipzig
+Zschopau|Fluss und Stadt im Erzgebirge
+Elster|Fluss durch Plauen, auch ein Vogel
+Tiber|Fluss Roms
+Arno|Fluss durch Florenz
+Seine|Fluss durch Paris
+Loire|Längster Fluss Frankreichs
+Rhone|Fluss vom Genfersee ins Mittelmeer
+Themse|Fluss durch London
+Moldau|Smetanas vertonter Fluss
+Weichsel|Fluss durch Warschau und Krakau
+Wolga|Längster Fluss Europas
+Nil|Strom durch Kairo
+Amazonas|Wasserreichster Fluss der Erde
+Mississippi|Strom Tom Sawyers
+Ganges|Heiliger Fluss Indiens
+Jangtse|Längster Fluss Chinas
+Sambesi|Fluss der Victoriafälle
+Jordan|Fluss zum Toten Meer
+Tigris|Fluss Mesopotamiens neben dem Euphrat
+Euphrat|Fluss Mesopotamiens neben dem Tigris
+Fichtelberg|Höchster Berg Sachsens
+Brocken|Höchster Gipfel des Harzes
+Zugspitze|Deutschlands höchster Gipfel
+Watzmann|Berg am Königssee mit Familiensage
+Feldberg|Höchster Gipfel des Schwarzwalds
+Arber|Höchster Berg des Bayerischen Waldes
+Wasserkuppe|Höchster Berg der Rhön, Wiege des Segelflugs
+Keilberg|Höchster Berg des Erzgebirges auf tschechischer Seite
+Matterhorn|Berg über Zermatt
+Eiger|Berg mit berüchtigter Nordwand
+Montblanc|Höchster Berg der Alpen
+Olymp|Sitz der griechischen Götter
+Vesuv|Vulkan über Neapel
+Aetna|Vulkan auf Sizilien
+Kilimandscharo|Höchster Berg Afrikas
+Everest|Höchster Berg der Erde
+Anden|Längstes Gebirge der Welt
+Ural|Gebirge zwischen Europa und Asien
+Karpaten|Gebirge im Bogen um Siebenbürgen
+Pyrenaeen|Gebirge zwischen Frankreich und Spanien
+Harz|Mittelgebirge der Hexen und des Brockens
+Rhoen|Mittelgebirge im Dreiländereck Hessen, Bayern, Thüringen
+Vogtland|Region um Plauen
+Erzgebirge|Mittelgebirge der Räuchermänner
+Spessart|Mittelgebirge des Wirtshauses aus dem Film
+Eifel|Vulkanmittelgebirge mit Maaren
+Taunus|Mittelgebirge nördlich von Frankfurt
+Odenwald|Mittelgebirge der Nibelungen-Sage
+Allgaeu|Region mit Neuschwanstein
+Ruegen|Größte deutsche Insel
+Usedom|Insel der Kaiserbäder
+Sylt|Nördlichste deutsche Insel
+Helgoland|Deutschlands einzige Hochseeinsel
+Borkum|Größte Ostfriesische Insel
+Fehmarn|Insel an der Vogelfluglinie nach Dänemark
+Bodensee|Schwäbisches Meer
+Chiemsee|Bayerisches Meer
+Koenigssee|See mit Echo und Sankt Bartholomä
+Mueritz|Größter See ganz in Deutschland
+Genfersee|Lac Léman auf Deutsch
+Baikal|Tiefster See der Erde
+Titicaca|Höchster schiffbarer See der Welt
+Sahara|Größte heiße Wüste der Erde
+Gobi|Wüste in der Mongolei
+Atacama|Trockenste Wüste der Erde
+Sibirien|Russlands kaltes Asien
+Patagonien|Südlichste Region Südamerikas
+Lappland|Heimat der Rentiere im Norden
+Island|Insel aus Feuer und Eis
+Groenland|Größte Insel der Erde
+Madagaskar|Inselstaat der Lemuren
+Sizilien|Größte Insel des Mittelmeers
+Korsika|Napoleons Geburtsinsel
+Kreta|Größte griechische Insel
+Zypern|Geteilte Mittelmeerinsel
+Malta|Kleinster EU-Staat
+Irland|Grüne Insel
+Schottland|Land der Highlands
+Wales|Land des roten Drachen
+Norwegen|Land der Fjorde
+Finnland|Land der tausend Seen
+Estland|Nördlichster baltischer Staat
+Lettland|Baltischer Staat mit Riga
+Litauen|Baltischer Staat mit Vilnius
+Polen|Östlicher Nachbar Sachsens
+Tschechien|Südlicher Nachbar des Erzgebirges
+Slowakei|Staat mit Bratislava
+Ungarn|Land des Gulaschs und der Puszta
+Rumaenien|Land Draculas
+Bulgarien|Land mit Sofia
+Kroatien|Land mit Dubrovnik
+Slowenien|Land mit Ljubljana
+Albanien|Land der Skipetaren
+Portugal|Land des Fado
+Belgien|Land mit Brüssel und Pralinen
+Luxemburg|Großherzogtum
+Schweiz|Land der Eidgenossen
+Liechtenstein|Fürstentum am Rhein
+Monaco|Fürstentum an der Côte d'Azur
+Andorra|Zwergstaat in den Pyrenäen
+Vatikan|Kleinster Staat der Welt
+Marokko|Land mit Marrakesch
+Tunesien|Land mit Karthagos Ruinen
+Aegypten|Land der Pyramiden
+Kenia|Land mit Nairobi
+Peru|Land von Machu Picchu
+Chile|Langgestrecktes Land am Pazifik
+Kuba|Insel von Fidel Castro
+Mexiko|Land der Azteken
+Kanada|Land mit Ahornblatt-Flagge
+Japan|Land der aufgehenden Sonne
+Nepal|Land mit Kathmandu
+Tibet|Dach der Welt
+Vietnam|Land mit Hanoi
+Indonesien|Größter Inselstaat der Welt
+Dresden|Elbflorenz
+Leipzig|Messestadt mit Thomanerchor
+Chemnitz|Karl-Marx-Stadt bis 1990
+Zwickau|Robert-Schumann-Stadt in Sachsen
+Plauen|Stadt der Spitze im Vogtland
+Riesa|Sächsische Stadt an der Elbe, Heimat der Nudeln
+Meissen|Stadt des Porzellans
+Bautzen|Stadt des Senfs und der Sorben
+Goerlitz|Östlichste Stadt Deutschlands
+Freiberg|Silberstadt im Erzgebirge
+Annaberg|Erzgebirgische Stadt mit Buchholz
+Oberwiesenthal|Höchstgelegene Stadt Deutschlands
+Weimar|Stadt Goethes und Schillers
+Erfurt|Landeshauptstadt Thüringens
+Jena|Stadt von Zeiss
+Gera|Ostthüringische Stadt mit Otto Dix
+Magdeburg|Stadt Ottos des Großen
+Potsdam|Stadt von Sanssouci
+Rostock|Hansestadt an der Warnow
+Luebeck|Stadt des Holstentors
+Bremen|Stadt mit Roland
+Hannover|Messestadt an der Leine
+Kassel|Stadt der documenta
+Koeln|Stadt mit Dom und Karneval
+Aachen|Kaiserstadt Karls des Großen
+Bonn|Ehemalige Bundeshauptstadt
+Trier|Älteste Stadt Deutschlands
+Mainz|Stadt Gutenbergs
+Nuernberg|Stadt des Christkindlesmarkts
+Bamberg|Stadt des Rauchbiers
+Wuerzburg|Stadt der Residenz am Main
+Augsburg|Fuggerstadt
+Regensburg|Stadt mit Steinerner Brücke
+Passau|Dreiflüssestadt
+Ulm|Stadt mit dem höchsten Kirchturm der Welt
+Freiburg|Stadt im Breisgau
+Konstanz|Stadt am Bodensee mit Konzil
+Wien|Stadt des Prater
+Salzburg|Mozarts Geburtsstadt
+Innsbruck|Hauptstadt Tirols
+Graz|Hauptstadt der Steiermark
+Linz|Stadt an der Donau mit Ars Electronica
+Bern|Schweizer Bundesstadt
+Zuerich|Größte Stadt der Schweiz
+Basel|Stadt am Rheinknie
+Prag|Goldene Stadt
+Krakau|Alte polnische Königsstadt
+Budapest|Stadt aus Buda und Pest
+Bukarest|Hauptstadt Rumäniens
+Athen|Stadt der Akropolis
+Rom|Ewige Stadt
+Venedig|Lagunenstadt
+Florenz|Wiege der Renaissance
+Mailand|Modestadt mit Scala
+Neapel|Stadt der Pizza am Vesuv
+Madrid|Spanische Hauptstadt
+Lissabon|Hauptstadt am Tejo
+Paris|Stadt der Liebe
+Lyon|Französische Gastronomie-Hauptstadt
+Bruegge|Venedig des Nordens
+Amsterdam|Stadt der Grachten
+Kopenhagen|Stadt der kleinen Meerjungfrau
+Oslo|Hauptstadt Norwegens
+Stockholm|Stadt der Nobelpreise
+Helsinki|Hauptstadt Finnlands
+Reykjavik|Nördlichste Hauptstadt der Welt
+Dublin|Hauptstadt Irlands
+Edinburgh|Schottische Hauptstadt mit Festival
+Moskau|Stadt des Kreml
+Istanbul|Stadt am Bosporus
+Kairo|Stadt am Nil
+Tokio|Japans Hauptstadt
+Peking|Stadt der Verbotenen Stadt
+Delhi|Indische Metropole
+Sydney|Stadt mit Opernhaus am Hafen
+Rio|Stadt des Zuckerhuts (Kurzname)
+Havanna|Hauptstadt Kubas
+Quito|Hauptstadt Ecuadors
+Lima|Hauptstadt Perus
+Nairobi|Hauptstadt Kenias
+Marrakesch|Rote Stadt Marokkos
+Bosporus|Meerenge zwischen Europa und Asien
+Gibraltar|Felsen an der Meerenge zum Atlantik
+Aermelkanal|Meerenge zwischen England und Frankreich
+Adria|Meer zwischen Italien und Kroatien
+Aegaeis|Meer der griechischen Inseln
+Ostsee|Baltisches Meer
+Nordsee|Meer mit Wattenmeer
+Atlantik|Ozean zwischen Europa und Amerika
+Pazifik|Größter Ozean
+Arktis|Nordpolargebiet
+Antarktis|Kontinent am Südpol
+Aequator|Breitengrad null
+Meridian|Längenkreis
+Fjord|Tief eingeschnittene Meeresbucht
+Atoll|Ringförmiges Korallenriff
+Delta|Mündungsform des Nils, auch griechischer Buchstabe
+Lagune|Vom Meer abgetrennte Wasserfläche
+Haff|Lagune an der Ostseeküste
+Bodden|Flache Ostseebucht in Vorpommern
+Watt|Bei Ebbe trockenes Küstengebiet
+Duene|Sandhügel am Strand
+Geysir|Heiße Springquelle
+Gletscher|Strom aus Eis
+Moraene|Schuttwall eines Gletschers
+Canyon|Tiefe Schlucht, z. B. der Grand ...
+Plateau|Hochebene
+Savanne|Grasland mit vereinzelten Bäumen
+Steppe|Baumloses Grasland
+Tundra|Kältesteppe im hohen Norden
+Taiga|Nordischer Nadelwaldgürtel
+Oase|Wasserstelle in der Wüste
+Kontinent|Erdteil
+Halbinsel|Land, das fast ganz von Wasser umgeben ist
+Krater|Öffnung eines Vulkans
+Magma|Gesteinsschmelze im Erdinneren
+Lava|Ausgetretenes Magma

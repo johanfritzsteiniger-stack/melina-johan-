@@ -1,6 +1,7 @@
 import {
   CalendarDays,
   Film,
+  Grid3x3,
   Home,
   Lightbulb,
   ListChecks,
@@ -24,6 +25,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/ideen", label: "Ideen", icon: Lightbulb },
   { href: "/watchlist", label: "Watchlist", icon: Film },
   { href: "/wetten", label: "Wetten", icon: Swords },
+  { href: "/raetsel", label: "Rätsel", icon: Grid3x3 },
   { href: "/einstellungen", label: "Einstellungen", icon: Settings },
 ];
 

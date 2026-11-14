@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { adminClient, firstTime, loadProfiles, missingConfig, sendToUsers } from "@/lib/server/push";
 import { berlinParts } from "@/lib/tz";
+import { ensurePuzzle } from "@/lib/server/crossword";
 import { dailySummary, dueReminders, reminderBody } from "@/lib/reminders";
 import type { CalendarEvent } from "@/lib/calendar";
 
@@ -13,12 +14,19 @@ export async function GET(request: NextRequest) {
   if (!secret || request.headers.get("authorization") !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "Nicht erlaubt" }, { status: 401 });
   }
-  const missing = missingConfig();
-  if (missing.length) return NextResponse.json({ error: "Es fehlt: " + missing.join(", ") }, { status: 500 });
-
   const db = adminClient();
   const now = new Date();
   const { date: today, hour } = berlinParts(now);
+
+  // Tägliches Kreuzworträtsel (braucht nur den Datenbank-Zugang, nicht Push)
+  let crossword: string = "skip";
+  if (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY) {
+    const res = await ensurePuzzle(db, today).catch((e: Error) => ({ error: e.message }));
+    crossword = "error" in res ? `Fehler: ${res.error}` : res.created ? "neu" : "vorhanden";
+  }
+
+  const missing = missingConfig();
+  if (missing.length) return NextResponse.json({ error: "Es fehlt: " + missing.join(", "), crossword }, { status: 500 });
   const profiles = await loadProfiles(db);
   const { data: rows } = await db.from("events").select("*");
   const events = (rows ?? []) as CalendarEvent[];
@@ -56,5 +64,5 @@ export async function GET(request: NextRequest) {
     .delete()
     .lt("created_at", new Date(now.getTime() - 30 * 86_400_000).toISOString());
 
-  return NextResponse.json({ ok: true, today, hour, reminders, daily });
+  return NextResponse.json({ ok: true, today, hour, reminders, daily, crossword });
 }
