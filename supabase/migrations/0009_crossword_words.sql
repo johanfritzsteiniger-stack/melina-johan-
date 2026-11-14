@@ -1,6 +1,6 @@
 -- Startpaket: 1616 Wörter mit Hinweisen für das Kreuzworträtsel
 -- Nach 0008_crossword.sql im SQL Editor ausführen. Mehrfaches Ausführen ist unschädlich.
-insert into public.cw_words (word, clue, source) values
+insert into public.cw_words (word, clue) values
 ('AACHEN', 'Kaiserstadt Karls des Großen'),
 ('AAL', 'Schlangenförmiger Fisch, laicht in der Sargassosee'),
 ('ABEND', 'Tagesausklang'),
