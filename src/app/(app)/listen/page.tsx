@@ -253,9 +253,9 @@ function ListView({
 
   async function add(e: React.FormEvent) {
     e.preventDefault();
-    // Mehrere Einträge auf einmal: durch Zeilenumbruch oder Komma getrennt
+    // Ein Eintrag pro Eingabe; Kommas bleiben im Text. Nur eingefügte Zeilen werden getrennt.
     const parts = text
-      .split(/\n|,/)
+      .split(/\n/)
       .map((t) => t.trim())
       .filter(Boolean);
     if (!parts.length) return;
@@ -362,7 +362,7 @@ function ListView({
         <form onSubmit={add} className="mb-4 flex gap-2">
           <input
             autoFocus
-            placeholder="Hinzufügen … (mehrere mit Komma)"
+            placeholder="Hinzufügen …"
             value={text}
             onChange={(e) => setText(e.target.value)}
             className={`${input} text-base`}

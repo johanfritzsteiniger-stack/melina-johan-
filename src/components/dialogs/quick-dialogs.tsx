@@ -26,7 +26,7 @@ export function QuickListItemDialog({ onClose }: { onClose: () => void }) {
   const chosen = listId ?? active[0]?.id ?? null;
 
   async function save() {
-    const parts = text.split(/\n|,/).map((t) => t.trim()).filter(Boolean);
+    const parts = text.split(/\n/).map((t) => t.trim()).filter(Boolean);
     if (!chosen || parts.length === 0) return;
     const base = nowSeconds();
     const { error } = await getSupabase()
@@ -51,7 +51,7 @@ export function QuickListItemDialog({ onClose }: { onClose: () => void }) {
           />
           <input
             autoFocus
-            placeholder="z. B. Milch, Brot, Eier"
+            placeholder="z. B. Milch, laktosefrei"
             value={text}
             onChange={(e) => setText(e.target.value)}
             className={`${inputClass} text-base`}
