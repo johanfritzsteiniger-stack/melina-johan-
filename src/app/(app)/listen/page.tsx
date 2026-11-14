@@ -24,7 +24,9 @@ import { useCalendarMeta } from "@/lib/use-calendar-meta";
 import { formatDate } from "@/lib/calendar";
 import { notifyPartner } from "@/lib/push-client";
 import { deleteWithUndo } from "@/lib/undo";
-import { toastSaved } from "@/lib/toast";
+import { toastError, toastSaved } from "@/lib/toast";
+import { useQueryParam } from "@/lib/use-query-param";
+import { useProfiles } from "@/lib/use-profile";
 import {
   ITEM_COLUMNS,
   LIST_COLUMNS,
@@ -46,7 +48,8 @@ export default function ListenPage() {
   const items = useTable<ListItem>("list_items", ITEM_COLUMNS, [
     { column: "sort" },
   ]);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  // Offene Liste steht in der Adresse – übersteht Neuladen, Zurück-Button funktioniert
+  const [selectedId, setSelectedId] = useQueryParam("liste");
   const [dialog, setDialog] = useState<{ list: List | null } | null>(null);
   const [showArchive, setShowArchive] = useState(false);
 
@@ -94,6 +97,7 @@ export default function ListenPage() {
       <ListView
         list={selected}
         items={items.rows.filter((i) => i.list_id === selected.id)}
+        setItems={items.setRows}
         archived={isListArchived(selected, today)}
         onBack={() => setSelectedId(null)}
         onEdit={() => setDialog({ list: selected })}
@@ -234,9 +238,11 @@ function ListView({
   onEdit,
   onTemplate,
   dialog,
+  setItems,
 }: {
   list: List;
   items: ListItem[];
+  setItems: React.Dispatch<React.SetStateAction<ListItem[]>>;
   archived: boolean;
   onBack: () => void;
   onEdit: () => void;
@@ -244,6 +250,8 @@ function ListView({
   dialog: React.ReactNode;
 }) {
   const meta = useCalendarMeta();
+  const { me } = useProfiles();
+  const myId = me?.id ?? null;
   const [text, setText] = useState("");
   const [showDone, setShowDone] = useState(false);
   const open = items.filter((i) => !i.done_at);
@@ -269,21 +277,20 @@ function ListView({
   }
 
   async function toggle(item: ListItem) {
-    const { data } = await getSupabase().auth.getUser();
-    await getSupabase()
-      .from("list_items")
-      .update(
-        item.done_at
-          ? { done_at: null, done_by: null }
-          : {
-              done_at: new Date().toISOString(),
-              done_by: data.user?.id ?? null,
-            },
-      )
-      .eq("id", item.id);
+    const patch = item.done_at
+      ? { done_at: null, done_by: null }
+      : { done_at: new Date().toISOString(), done_by: myId };
+    // Sofort anzeigen, dann speichern
+    setItems((rows) => rows.map((r) => (r.id === item.id ? { ...r, ...patch } : r)));
+    const { error } = await getSupabase().from("list_items").update(patch).eq("id", item.id);
+    if (error) {
+      setItems((rows) => rows.map((r) => (r.id === item.id ? item : r)));
+      toastError("Speichern hat nicht geklappt: " + error.message);
+    }
   }
 
   async function removeItem(item: ListItem) {
+    setItems((rows) => rows.filter((r) => r.id !== item.id));
     await deleteWithUndo({
       table: "list_items",
       ids: [item.id],

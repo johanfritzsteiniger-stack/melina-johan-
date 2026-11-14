@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { getSupabase } from "@/lib/supabase/client";
+import { subscribeRefresh } from "@/lib/table-bus";
 import type { Battle, Entry } from "@/lib/battles";
 
 export const BATTLE_COLUMNS =
@@ -46,7 +47,9 @@ export function useBattles() {
       .on("postgres_changes", { event: "*", schema: "public", table: "battles" }, load)
       .on("postgres_changes", { event: "*", schema: "public", table: "battle_entries" }, load)
       .subscribe();
+    const off = subscribeRefresh(["battles", "battle_entries"], load);
     return () => {
+      off();
       window.clearTimeout(initial);
       supabase.removeChannel(channel);
     };

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { getSupabase } from "@/lib/supabase/client";
+import { subscribeRefresh } from "@/lib/table-bus";
 
 type Order = { column: string; ascending?: boolean };
 
@@ -37,7 +38,9 @@ export function useTable<T>(table: string, columns: string, order: Order[] = [])
       .channel(`${table}-${Math.random().toString(36).slice(2)}`)
       .on("postgres_changes", { event: "*", schema: "public", table }, load)
       .subscribe();
+    const off = subscribeRefresh([table], load);
     return () => {
+      off();
       window.clearTimeout(initial);
       supabase.removeChannel(channel);
     };

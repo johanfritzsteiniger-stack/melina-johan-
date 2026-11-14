@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { getSupabase } from "@/lib/supabase/client";
+import { subscribeRefresh } from "@/lib/table-bus";
 import type { CalendarEvent } from "@/lib/calendar";
 
 const COLUMNS =
@@ -17,7 +18,8 @@ export function useEvents() {
     const supabase = getSupabase();
     let active = true;
 
-    supabase
+    const fetchAll = () =>
+      supabase
       .from("events")
       .select(COLUMNS)
       .order("start_date")
@@ -34,9 +36,11 @@ export function useEvents() {
         }
         setLoading(false);
       });
+    fetchAll();
+    const off = subscribeRefresh(["events"], fetchAll);
 
     const channel = supabase
-      .channel("events-live")
+      .channel(`events-${Math.random().toString(36).slice(2)}`)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "events" },
@@ -56,6 +60,7 @@ export function useEvents() {
 
     return () => {
       active = false;
+      off();
       supabase.removeChannel(channel);
     };
   }, []);

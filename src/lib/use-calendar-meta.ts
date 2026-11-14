@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { getSupabase } from "@/lib/supabase/client";
+import { subscribeRefresh } from "@/lib/table-bus";
 import type { CalendarEvent, Category } from "@/lib/calendar";
 
 export type Person = { id: string; display_name: string; color: string | null };
@@ -81,7 +82,9 @@ export function useCalendarMeta() {
       .on("postgres_changes", { event: "*", schema: "public", table: "profiles" }, load)
       .on("postgres_changes", { event: "*", schema: "public", table: "app_settings" }, load)
       .subscribe();
+    const off = subscribeRefresh(["categories", "profiles", "app_settings"], load);
     return () => {
+      off();
       window.clearTimeout(initial);
       supabase.removeChannel(channel);
     };
