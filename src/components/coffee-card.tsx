@@ -6,7 +6,7 @@ import { getSupabase } from "@/lib/supabase/client";
 import { useCoffeeYear } from "@/lib/use-coffee";
 import { diffDays } from "@/lib/calendar";
 import { toast, toastError } from "@/lib/toast";
-import { playCoffeeSound } from "@/lib/coffee-sound";
+import { playCoffeeSound, preloadCoffeeSound } from "@/lib/coffee-sound";
 import type { Person } from "@/lib/use-calendar-meta";
 
 /** Kaffee-Zähler auf der Startseite: antippen → bestätigen → gezählt. */
@@ -69,7 +69,10 @@ export function CoffeeCard({
     <>
       <button
         type="button"
-        onClick={() => setAsking(true)}
+        onClick={() => {
+          preloadCoffeeSound();
+          setAsking(true);
+        }}
         disabled={!today || !meId || !!error}
         className="mb-6 w-full rounded-2xl border border-border bg-card p-5 text-left transition-colors hover:border-accent/50 active:scale-[0.99] disabled:opacity-100"
       >
