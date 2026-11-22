@@ -11,6 +11,7 @@ import { useBattles } from "@/lib/use-battles";
 import { computeResults, isArchived } from "@/lib/battles";
 import { leadText } from "@/components/battle-ui";
 import { TogetherCard } from "@/components/together-card";
+import { CoffeeCard } from "@/components/coffee-card";
 import { QuickAdd } from "@/components/quick-add";
 import { useTable } from "@/lib/use-table";
 import { LIST_COLUMNS, isListArchived, type List, type ListItem } from "@/lib/lists";
@@ -103,6 +104,8 @@ export default function DashboardPage() {
       </header>
 
       <TogetherCard since={meta.togetherSince} today={today} />
+
+      <CoffeeCard today={today} meId={me?.id ?? null} people={meta.people} personColor={meta.personColor} />
 
       {countdowns.length > 0 && (
         <section className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
