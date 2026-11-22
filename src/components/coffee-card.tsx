@@ -6,6 +6,7 @@ import { getSupabase } from "@/lib/supabase/client";
 import { useCoffeeYear } from "@/lib/use-coffee";
 import { diffDays } from "@/lib/calendar";
 import { toast, toastError } from "@/lib/toast";
+import { playCoffeeSound } from "@/lib/coffee-sound";
 import type { Person } from "@/lib/use-calendar-meta";
 
 /** Kaffee-Zähler auf der Startseite: antippen → bestätigen → gezählt. */
@@ -40,6 +41,7 @@ export function CoffeeCard({
 
   async function confirm() {
     if (busy || !meId) return;
+    playCoffeeSound(); // direkt im Klick, sonst blockt iOS den Ton
     setBusy(true);
     const id = crypto.randomUUID();
     bump(1); // sofort anzeigen
