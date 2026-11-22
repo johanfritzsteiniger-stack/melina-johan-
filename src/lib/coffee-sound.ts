@@ -29,7 +29,7 @@ export function playCoffeeSound() {
     if (ac.state === "suspended") void ac.resume();
 
     const master = ac.createGain();
-    master.gain.value = 0.5;
+    master.gain.value = 0.32;
     master.connect(ac.destination);
     const t0 = ac.currentTime + 0.02;
     const noise = noiseBuffer(ac, 3);
